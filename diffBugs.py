@@ -1,4 +1,5 @@
 import subprocess
+import sys
 import os
 import ConfigParser
 import re
@@ -10,22 +11,38 @@ configs = {}
 Reads configuration file called parse_defects4j.cfg
 """
 def readConfigurations():
-    config = ConfigParser.ConfigParser()
-    config.read('parse_defects4j.cfg')
-    configs["project"] = config.get("Basic","project")
-    configs["projectNum"] = config.get("Basic","projectNum")
-    configs["version"] = config.get("Basic","version")
-    configs["examplesPath"] = config.get("Basic","examplesPath")
-    configs["srcPath"] = config.get("Basic","srcPath")
-    configs["copiedFiles"] = config.get("Basic", "copiedFiles")
-    configs["projectPath"] = config.get("Basic", "projectPath")
+    try:
+        config = ConfigParser.ConfigParser()
+        config.read('parse_defects4j.cfg')
+        configs["project"] = config.get("Basic","project")
+        configs["projectNum"] = config.get("Basic","projectNum")
+        configs["version"] = config.get("Basic","version")
+        configs["examplesPath"] = config.get("Basic","examplesPath")
+        configs["srcPath"] = config.get("Basic","srcPath")
+        configs["copiedFiles"] = config.get("Basic", "copiedFiles")
+        configs["projectPath"] = config.get("Basic", "projectPath")
+    except:
+        print "Error with Configuration file. Please make sure it meets these specifications: "
+        print "FileName: parse_defects4j.cfg   File Path: same directory as diffBugs.py"
+        print "---CONFIG SPECIFICATION---"
+        print "[Basic]"
+        print "project = <name of projet according to Defects4j>"
+        print "projectNum = <number of version IDs to iterate>"
+        print "version = <b or f>"
+        print "examplesPath = <absolute path to directory with GenProg defects4j projects>"
+        print "srcPath = <relative path from project directory to source code path>"
+        print "copiedFiles = <absolute path to resulting directory>"
+        print "projectPath = <Absolute Path to resulting project directory>"
+        print "------"
+        sys.exit()
 
 """
 Parses defect4j info command
+@param {String} bugID; index of bug version
 @return {Dictionary} Keys are file names, Values are file paths.
 """
-def defects4jInfo():
-    bashCommand = "defects4j info -p " + configs["project"] + " -b " + configs["projectNum"]
+def defects4jInfo(bugID):
+    bashCommand = "defects4j info -p " + configs["project"] + " -b " + bugID
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
     #Parsing default defects4j info command
@@ -39,31 +56,39 @@ def defects4jInfo():
     return filePackage
 
 """
+@param {String} bugID; index of bug version
 Checkout fixed project into Example directory
 """
-def checkoutFixedProject():
-    bashCommand = "defects4j checkout -p " + configs["project"] + " -v " + configs["projectNum"] + "f -w " + configs["examplesPath"]+configs["projectName"] + configs["projectNum"] + "F"
+def checkoutFixedProject(bugID):
+    bashCommand = ''.join([
+        "defects4j checkout -p ", configs["project"],
+        " -v ", bugID,
+        "f -w ", configs["examplesPath"],configs["project"], bugID, "F"
+        ])
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
-    configs["fixedPath"] = configs["examplesPath"]+configs["projectName"] + configs["projectNum"] + "F"
+    configs["fixedPath"] = configs["examplesPath"] + configs["project"] + bugID + "F"
 
 """
 Bash copies modified files to Copies directory
+@param {String} bugID; index of bug version
 @param {List} filePaths: list of relative paths
 """
-def copyModifiedFiles(filePaths):
+def copyModifiedFiles(filePaths, bugID):
     if not os.path.lexists(configs["projectPath"]):
         os.makedirs(configs["projectPath"])
 
+    #Multiple files may have been modified in each version, hence this iteration
     for name, path in filePaths.items():
         buggyCommand =   ''.join([
                         "scp ", configs["examplesPath"], 
                         configs["project"].lower(),
-                        configs["projectNum"]+"Buggy/", 
+                        bugID, "Buggy/", 
                         path,
                         " ",
                         configs["projectPath"], "/",
-                        configs["projectNum"], "/",
+                        bugID, "/",
+                        "b", "/",
                         name
                         ])
         fixedCommand =   ''.join([
@@ -71,25 +96,25 @@ def copyModifiedFiles(filePaths):
                         path,
                         " ",
                         configs["projectPath"], "/",
-                        configs["projectNum"], "/",
+                        bugID,  "/",
+                        "/f/",
                         name
                         ])
-
-        if not os.path.lexists(configs["projectPath"]+"/"+configs["projectNum"]):
-            os.makedirs(configs["projectPath"]+"/"+configs["projectNum"])
-        if not os.path.lexists(configs["projectPath"]+"/"+configs["projectNum"]+"/b"):
-            os.makedirs(configs["projectPath"]+"/"+configs["projectNum"]+"/b")
-        if not os.path.lexists(configs["projectPath"]+"/"+configs["projectNum"]+"/f"):
-            os.makedirs(configs["projectPath"]+"/"+configs["projectNum"]+"/f")
+        if not os.path.lexists(configs["projectPath"]+"/"+bugID):
+            os.makedirs(configs["projectPath"]+"/"+bugID)
+        if not os.path.lexists(configs["projectPath"]+"/"+bugID+"/b"):
+            os.makedirs(configs["projectPath"]+"/"+bugID+"/b")
+        if not os.path.lexists(configs["projectPath"]+"/"+bugID+"/f"):
+            os.makedirs(configs["projectPath"]+"/"+bugID+"/f")
 
         process = subprocess.Popen(buggyCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
         process = subprocess.Popen(fixedCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
 
-
-
-
-readConfigurations()
-checkoutFixedProject()
-copyModifiedFiles(defects4jInfo())
+def main():
+    readConfigurations()
+    for i in range(1,int(configs["projectNum"])+1):
+        i = str(i)
+        checkoutFixedProject(i)
+        copyModifiedFiles(defects4jInfo(i), i)
