@@ -9,10 +9,12 @@ def saveWorkbook():
     wb.save("save.xlsx")
 
 def prepareDirectory():
-    diffPath = raw_input("Enter absolute path to aggregated source code directory: ")
+    diffPath = "/Users/ashleychen/Desktop/EntropyLocalization/Copies/Time"
+    #diffPath = raw_input("Enter absolute path to aggregated source code directory: ")
     versions = [version for version in os.listdir(diffPath) if version != ".DS_Store"] #filter out default mac files
-    for versionDirectory in versions:
-        getDiffData(diffPath + "/" + versionDirectory, versionDirectory)
+    #for versionDirectory in versions:
+    versionDirectory = versions[0]
+    getDiffData(diffPath + "/" + versionDirectory, versionDirectory)
 
 def getDiffData(versionPath, versionID):
     before_files = [i for i in os.listdir(versionPath + "/b") if i != ".DS_store"]
@@ -34,11 +36,19 @@ def getDiffData(versionPath, versionID):
             process = subprocess.Popen(diffCommand.split(), stdout=subprocess.PIPE)
             output, error = process.communicate()
             bug_information[fileName] = output
-    appendWorkbook(version_information, bug_information)
+    parseOutput(bug_information["Partial.java"])
+    #appendWorkbook(version_information, bug_information)
 
 def appendWorkbook(versionMap, bugMap):
-    pass
+    appending = [ v for v in bugMap.values() ]
+    ws.append(appending)
+
+def parseOutput(result):
+    result = result.split("\n")
+    result[0]
 
 def main():
     prepareDirectory()
     saveWorkbook()
+
+main()
