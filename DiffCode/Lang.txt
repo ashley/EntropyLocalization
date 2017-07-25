@@ -1,0 +1,663 @@
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/1
+VersionID : 1
+results : 
+working : True
+NumberUtils.java : 466a467,475
+>             char firstSigDigit = 0; // strip leading zeroes
+>             for(int i = pfxLen; i < str.length(); i++) {
+>                 firstSigDigit = str.charAt(i);
+>                 if (firstSigDigit == '0') { // count leading zeroes
+>                     pfxLen++;
+>                 } else {
+>                     break;
+>                 }
+>             }
+468c477
+<             if (hexDigits > 16) { // too many for Long
+---
+>             if (hexDigits > 16 || (hexDigits == 16 && firstSigDigit > '7')) { // too many for Long
+471c480
+<             if (hexDigits > 8) { // too many for an int
+---
+>             if (hexDigits > 8 || (hexDigits == 8 && firstSigDigit > '7')) { // too many for an int
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/10
+VersionID : 10
+results : 
+working : True
+FastDateParser.java : 304d303
+<         boolean wasWhite= false;
+307,314d305
+<             if(Character.isWhitespace(c)) {
+<                 if(!wasWhite) {
+<                     wasWhite= true;
+<                     regex.append("\\s*+");
+<                 }
+<                 continue;
+<             }
+<             wasWhite= false;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/11
+VersionID : 11
+results : 
+working : True
+RandomStringUtils.java : 244a245,248
+>         } else {
+>             if (end <= start) {
+>                 throw new IllegalArgumentException("Parameter end (" + end + ") must be greater than start (" + start + ")");
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/12
+VersionID : 12
+results : 
+working : True
+RandomStringUtils.java : 229a230,232
+>         if (chars != null && chars.length == 0) {
+>             throw new IllegalArgumentException("The chars array must not be empty");
+>         }
+231a235,237
+>             if (chars != null) {
+>                 end = chars.length;
+>             } else {
+237a244
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/13
+VersionID : 13
+results : 
+working : True
+SerializationUtils.java : 238a239,240
+>         private static final Map<String, Class<?>> primitiveTypes = 
+>                 new HashMap<String, Class<?>>();
+251a254,262
+>             primitiveTypes.put("byte", byte.class);
+>             primitiveTypes.put("short", short.class);
+>             primitiveTypes.put("int", int.class);
+>             primitiveTypes.put("long", long.class);
+>             primitiveTypes.put("float", float.class);
+>             primitiveTypes.put("double", double.class);
+>             primitiveTypes.put("boolean", boolean.class);
+>             primitiveTypes.put("char", char.class);
+>             primitiveTypes.put("void", void.class);
+267a279
+>                 try {
+268a281,287
+>                 } catch (ClassNotFoundException cnfe) {
+>                     Class<?> cls = primitiveTypes.get(name);
+>                     if (cls != null)
+>                         return cls;
+>                     else
+>                         throw cnfe;
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/14
+VersionID : 14
+results : 
+working : True
+StringUtils.java : 787a788
+>         if (cs1 instanceof String && cs2 instanceof String) {
+788a790,791
+>         }
+>         return CharSequenceUtils.regionMatches(cs1, false, 0, cs2, 0, Math.max(cs1.length(), cs2.length()));
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/15
+VersionID : 15
+results : 
+working : True
+TypeUtils.java : 219,221c219,221
+<         for (Map.Entry<TypeVariable<?>, Type> entry : toTypeVarAssigns.entrySet()) {
+<             Type toTypeArg = entry.getValue();
+<             Type fromTypeArg = fromTypeVarAssigns.get(entry.getKey());
+---
+>         for (TypeVariable<?> var : toTypeVarAssigns.keySet()) {
+>             Type toTypeArg = unrollVariableAssignments(var, toTypeVarAssigns);
+>             Type fromTypeArg = unrollVariableAssignments(var, fromTypeVarAssigns);
+675c675
+<         if (cls.getTypeParameters().length > 0 || toClass.equals(cls)) {
+---
+>         if (toClass.equals(cls)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/16
+VersionID : 16
+results : 
+working : True
+NumberUtils.java : 458c458
+<         if (str.startsWith("0x") || str.startsWith("-0x")) {
+---
+>         if (str.startsWith("0x") || str.startsWith("-0x") || str.startsWith("0X") || str.startsWith("-0X")) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/17
+VersionID : 17
+results : 
+working : True
+CharSequenceTranslator.java : 83c83
+<         int len = Character.codePointCount(input, 0, input.length());
+---
+>         int len = input.length();
+88a89,90
+>                 pos+= c.length;
+>                 continue;
+90d91
+<             else {
+94d94
+<                     if (pos < len - 2) {
+96,100d95
+<                     } else {
+<                         pos++;
+<                     }
+<                 }
+<                 pos--;
+102d96
+<             pos++;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/18
+VersionID : 18
+results : 
+working : True
+FastDateFormat.java : 495,497c495
+<                 if (tokenLen >= 4) {
+<                     rule = selectNumberRule(Calendar.YEAR, tokenLen);
+<                 } else {
+---
+>                 if (tokenLen == 2) {
+498a497,498
+>                 } else {
+>                     rule = selectNumberRule(Calendar.YEAR, tokenLen < 4 ? 4 : tokenLen);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/19
+VersionID : 19
+results : 
+working : True
+NumericEntityUnescaper.java : 40c40
+<         if(input.charAt(index) == '&' && index < seqEnd - 1 && input.charAt(index + 1) == '#') {
+---
+>         if(input.charAt(index) == '&' && index < seqEnd - 2 && input.charAt(index + 1) == '#') {
+49a50,52
+>                 if(start == seqEnd) {
+>                     return 0;
+>                 }
+54c57,59
+<             while(input.charAt(end) != ';') 
+---
+>             while(end < seqEnd && ( (input.charAt(end) >= '0' && input.charAt(end) <= '9') ||
+>                                     (input.charAt(end) >= 'a' && input.charAt(end) <= 'f') ||
+>                                     (input.charAt(end) >= 'A' && input.charAt(end) <= 'F') ) )
+78a84
+>             boolean semiNext = (end != seqEnd) && (input.charAt(end) == ';');
+80c86
+<             return 2 + (end - start) + (isHex ? 1 : 0) + 1;
+---
+>             return 2 + (end - start) + (isHex ? 1 : 0) + (semiNext ? 1 : 0);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/2
+VersionID : 2
+results : 
+working : True
+LocaleUtils.java : 91a92,94
+>         if (str.contains("#")) { // LANG-879 - Cannot handle Java 7 script & extensions
+>             throw new IllegalArgumentException("Invalid locale format: " + str);
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/20
+VersionID : 20
+results : 
+working : True
+StringUtils.java : 3298c3298
+<         StringBuilder buf = new StringBuilder((array[startIndex] == null ? 16 : array[startIndex].toString().length()) + 1);
+---
+>         StringBuilder buf = new StringBuilder(noOfItems * 16);
+3383c3383
+<         StringBuilder buf = new StringBuilder((array[startIndex] == null ? 16 : array[startIndex].toString().length()) + separator.length());
+---
+>         StringBuilder buf = new StringBuilder(noOfItems * 16);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/21
+VersionID : 21
+results : 
+working : True
+DateUtils.java : 265c265
+<                 cal1.get(Calendar.HOUR) == cal2.get(Calendar.HOUR) &&
+---
+>                 cal1.get(Calendar.HOUR_OF_DAY) == cal2.get(Calendar.HOUR_OF_DAY) &&
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/22
+VersionID : 22
+results : 
+working : True
+Fraction.java : 582a583,588
+>         if ((u == 0) || (v == 0)) {
+>             if ((u == Integer.MIN_VALUE) || (v == Integer.MIN_VALUE)) {
+>                 throw new ArithmeticException("overflow: gcd is 2^31");
+>             }
+>             return Math.abs(u) + Math.abs(v);
+>         }
+584c590
+<         if (Math.abs(u) <= 1 || Math.abs(v) <= 1) {
+---
+>         if (Math.abs(u) == 1 || Math.abs(v) == 1) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/23
+VersionID : 23
+results : 
+working : True
+ExtendedMessageFormat.java : 72a73
+>     private static final int HASH_SEED = 31;
+262a264,286
+>     @Override
+>     public boolean equals(Object obj) {
+>         if (obj == this) {
+>             return true;
+>         }
+>         if (obj == null) {
+>             return false;
+>         }
+>         if (!super.equals(obj)) {
+>             return false;
+>         }
+>         if (ObjectUtils.notEqual(getClass(), obj.getClass())) {
+>           return false;
+>         }
+>         ExtendedMessageFormat rhs = (ExtendedMessageFormat)obj;
+>         if (ObjectUtils.notEqual(toPattern, rhs.toPattern)) {
+>             return false;
+>         }
+>         if (ObjectUtils.notEqual(registry, rhs.registry)) {
+>             return false;
+>         }
+>         return true;
+>     }
+268a293,299
+>     @Override
+>     public int hashCode() {
+>         int result = super.hashCode();
+>         result = HASH_SEED * result + ObjectUtils.hashCode(registry);
+>         result = HASH_SEED * result + ObjectUtils.hashCode(toPattern);
+>         return result;
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/24
+VersionID : 24
+results : 
+working : True
+NumberUtils.java : 1413c1413
+<                 return foundDigit && !hasExp;
+---
+>                 return foundDigit && !hasExp && !hasDecPoint;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/25
+VersionID : 25
+results : 
+working : True
+EntityArrays.java : 74,100c74,100
+<         {"\u00CB", "&Ecirc;"}, // Ê - uppercase E, circumflex accent
+<         {"\u00CC", "&Euml;"}, // Ë - uppercase E, umlaut
+<         {"\u00CD", "&Igrave;"}, // Ì - uppercase I, grave accent
+<         {"\u00CE", "&Iacute;"}, // Í - uppercase I, acute accent
+<         {"\u00CF", "&Icirc;"}, // Î - uppercase I, circumflex accent
+<         {"\u00D0", "&Iuml;"}, // Ï - uppercase I, umlaut
+<         {"\u00D1", "&ETH;"}, // Ð - uppercase Eth, Icelandic
+<         {"\u00D2", "&Ntilde;"}, // Ñ - uppercase N, tilde
+<         {"\u00D3", "&Ograve;"}, // Ò - uppercase O, grave accent
+<         {"\u00D4", "&Oacute;"}, // Ó - uppercase O, acute accent
+<         {"\u00D5", "&Ocirc;"}, // Ô - uppercase O, circumflex accent
+<         {"\u00D6", "&Otilde;"}, // Õ - uppercase O, tilde
+<         {"\u00D7", "&Ouml;"}, // Ö - uppercase O, umlaut
+<         {"\u00D8", "&times;"}, // multiplication sign
+<         {"\u00D9", "&Oslash;"}, // Ø - uppercase O, slash
+<         {"\u00DA", "&Ugrave;"}, // Ù - uppercase U, grave accent
+<         {"\u00DB", "&Uacute;"}, // Ú - uppercase U, acute accent
+<         {"\u00DC", "&Ucirc;"}, // Û - uppercase U, circumflex accent
+<         {"\u00DD", "&Uuml;"}, // Ü - uppercase U, umlaut
+<         {"\u00DE", "&Yacute;"}, // Ý - uppercase Y, acute accent
+<         {"\u00DF", "&THORN;"}, // Þ - uppercase THORN, Icelandic
+<         {"\u00E0", "&szlig;"}, // ß - lowercase sharps, German
+<         {"\u00E1", "&agrave;"}, // à - lowercase a, grave accent
+<         {"\u00E2", "&aacute;"}, // á - lowercase a, acute accent
+<         {"\u00E3", "&acirc;"}, // â - lowercase a, circumflex accent
+<         {"\u00E4", "&atilde;"}, // ã - lowercase a, tilde
+<         {"\u00E5", "&auml;"}, // ä - lowercase a, umlaut
+---
+>         {"\u00CA", "&Ecirc;"}, // Ê - uppercase E, circumflex accent
+>         {"\u00CB", "&Euml;"}, // Ë - uppercase E, umlaut
+>         {"\u00CC", "&Igrave;"}, // Ì - uppercase I, grave accent
+>         {"\u00CD", "&Iacute;"}, // Í - uppercase I, acute accent
+>         {"\u00CE", "&Icirc;"}, // Î - uppercase I, circumflex accent
+>         {"\u00CF", "&Iuml;"}, // Ï - uppercase I, umlaut
+>         {"\u00D0", "&ETH;"}, // Ð - uppercase Eth, Icelandic
+>         {"\u00D1", "&Ntilde;"}, // Ñ - uppercase N, tilde
+>         {"\u00D2", "&Ograve;"}, // Ò - uppercase O, grave accent
+>         {"\u00D3", "&Oacute;"}, // Ó - uppercase O, acute accent
+>         {"\u00D4", "&Ocirc;"}, // Ô - uppercase O, circumflex accent
+>         {"\u00D5", "&Otilde;"}, // Õ - uppercase O, tilde
+>         {"\u00D6", "&Ouml;"}, // Ö - uppercase O, umlaut
+>         {"\u00D7", "&times;"}, // multiplication sign
+>         {"\u00D8", "&Oslash;"}, // Ø - uppercase O, slash
+>         {"\u00D9", "&Ugrave;"}, // Ù - uppercase U, grave accent
+>         {"\u00DA", "&Uacute;"}, // Ú - uppercase U, acute accent
+>         {"\u00DB", "&Ucirc;"}, // Û - uppercase U, circumflex accent
+>         {"\u00DC", "&Uuml;"}, // Ü - uppercase U, umlaut
+>         {"\u00DD", "&Yacute;"}, // Ý - uppercase Y, acute accent
+>         {"\u00DE", "&THORN;"}, // Þ - uppercase THORN, Icelandic
+>         {"\u00DF", "&szlig;"}, // ß - lowercase sharps, German
+>         {"\u00E0", "&agrave;"}, // à - lowercase a, grave accent
+>         {"\u00E1", "&aacute;"}, // á - lowercase a, acute accent
+>         {"\u00E2", "&acirc;"}, // â - lowercase a, circumflex accent
+>         {"\u00E3", "&atilde;"}, // ã - lowercase a, tilde
+>         {"\u00E4", "&auml;"}, // ä - lowercase a, umlaut
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/26
+VersionID : 26
+results : 
+working : True
+FastDateFormat.java : 820c820
+<         Calendar c = new GregorianCalendar(mTimeZone);
+---
+>         Calendar c = new GregorianCalendar(mTimeZone, mLocale);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/27
+VersionID : 27
+results : 
+working : True
+NumberUtils.java : 479c479
+<                 if (expPos < decPos) {
+---
+>                 if (expPos < decPos || expPos > str.length()) {
+488a489,491
+>                 if (expPos > str.length()) {
+>                     throw new NumberFormatException(str + " is not a valid number.");
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/28
+VersionID : 28
+results : 
+working : True
+NumericEntityUnescaper.java : 62a63,67
+>             if(entityValue > 0xFFFF) {
+>                 char[] chrs = Character.toChars(entityValue);
+>                 out.write(chrs[0]);
+>                 out.write(chrs[1]);
+>             } else {
+63a69
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/29
+VersionID : 29
+results : 
+working : True
+SystemUtils.java : 1672c1672
+<     static float toJavaVersionInt(String version) {
+---
+>     static int toJavaVersionInt(String version) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/3
+VersionID : 3
+results : 
+working : True
+NumberUtils.java : 592a593
+>             if(numDecimals <= 7){// If number has 7 or fewer digits past the decimal point then make it a float
+596a598
+>             }
+600a603
+>             if(numDecimals <= 16){// If number has between 8 and 16 digits past the decimal point then make it a double
+604a608
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/30
+VersionID : 30
+results : 
+working : True
+StringUtils.java : 1375a1376
+>         int csLast = csLen - 1;
+1376a1378
+>         int searchLast = searchLen - 1;
+1380a1383
+>                     if (i < csLast && j < searchLast && Character.isHighSurrogate(ch)) {
+1381a1385,1388
+>                         if (searchChars[j + 1] == cs.charAt(i + 1)) {
+>                             return i;
+>                         }
+>                     } else {
+1382a1390
+>                     }
+1443c1451
+<     public static boolean containsAny(CharSequence cs, char[] searchChars) {
+---
+>     public static boolean containsAny(String cs, char[] searchChars) {
+1455c1463,1464
+<                     if (i < csLast && j < searchLast && ch >= Character.MIN_HIGH_SURROGATE && ch <= Character.MAX_HIGH_SURROGATE) {
+---
+>                     if (Character.isHighSurrogate(ch)) {
+>                         if (j == searchLast) {
+1457c1466,1468
+<                         if (searchChars[j + 1] == cs.charAt(i + 1)) {
+---
+>                             return true;
+>                         }
+>                         if (i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
+1497c1508
+<     public static boolean containsAny(CharSequence cs, String searchChars) {
+---
+>     public static boolean containsAny(String cs, String searchChars) {
+1532a1544
+>         int csLast = csLen - 1;
+1533a1546
+>         int searchLast = searchLen - 1;
+1538a1552,1556
+>                     if (i < csLast && j < searchLast && Character.isHighSurrogate(ch)) {
+>                         if (searchChars[j + 1] == cs.charAt(i + 1)) {
+>                             continue outer;
+>                         }
+>                     } else {
+1539a1558
+>                     }
+1576c1595,1598
+<             if (searchChars.indexOf(ch) < 0) {
+---
+>             boolean chFound = searchChars.indexOf(ch) >= 0;
+>             if (i + 1 < strLen && Character.isHighSurrogate(ch)) {
+>                 char ch2 = str.charAt(i + 1);
+>                 if (chFound && searchChars.indexOf(ch2) < 0) {
+1577a1600,1604
+>                 }
+>             } else {
+>                 if (!chFound) {
+>                     return i;
+>                 }
+1677a1705
+>         int csLast = csLen - 1;
+1678a1707
+>         int searchLast = searchLen - 1;
+1682a1712,1713
+>                     if (Character.isHighSurrogate(ch)) {
+>                         if (j == searchLast) {
+1683a1715,1720
+>                             return false;
+>                         }
+>                         if (i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
+>                             return false;
+>                         }
+>                     } else {
+1685a1723
+>                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/31
+VersionID : 31
+results : 
+working : True
+StringUtils.java : 1445a1446,1447
+> 		int csLastIndex = csLength - 1;
+> 		int searchLastIndex = searchLength - 1;
+1449a1452
+> 					if (i < csLastIndex && j < searchLastIndex && ch >= Character.MIN_HIGH_SURROGATE && ch <= Character.MAX_HIGH_SURROGATE) {
+1450a1454,1457
+> 						if (searchChars[j + 1] == cs.charAt(i + 1)) {
+> 							return true;
+> 						}
+> 					} else {
+1452a1460
+> 					}
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/32
+VersionID : 32
+results : 
+working : True
+HashCodeBuilder.java : 104,109c104
+<     private static final ThreadLocal<Set<IDKey>> REGISTRY = new ThreadLocal<Set<IDKey>>() {
+<         @Override
+<         protected Set<IDKey> initialValue() {
+<             return new HashSet<IDKey>();
+<         }
+<     };
+---
+>     private static final ThreadLocal<Set<IDKey>> REGISTRY = new ThreadLocal<Set<IDKey>>();
+152c147,148
+<         return getRegistry().contains(new IDKey(value));
+---
+>         Set<IDKey> registry = getRegistry();
+>         return registry != null && registry.contains(new IDKey(value));
+521a518,522
+>         synchronized (HashCodeBuilder.class) {
+>             if (getRegistry() == null) {
+>                 REGISTRY.set(new HashSet<IDKey>());
+>             }
+>         }
+538c539,547
+<         getRegistry().remove(new IDKey(value));
+---
+>         Set<IDKey> s = getRegistry();
+>         if (s != null) {
+>             s.remove(new IDKey(value));
+>             synchronized (HashCodeBuilder.class) {
+>                 if (s.isEmpty()) {
+>                     REGISTRY.remove();
+>                 }
+>             }
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/33
+VersionID : 33
+results : 
+working : True
+ClassUtils.java : 910c910
+<             classes[i] = array[i].getClass();
+---
+>             classes[i] = array[i] == null ? null : array[i].getClass();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/34
+VersionID : 34
+results : 
+working : True
+ToStringStyle.java : 148c148
+<         return REGISTRY.get() != null ? REGISTRY.get() : Collections.<Object, Object>emptyMap();
+---
+>         return REGISTRY.get();
+164c164
+<         return m.containsKey(value);
+---
+>         return m != null && m.containsKey(value);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/35
+VersionID : 35
+results : 
+working : True
+ArrayUtils.java : 3295c3295
+<             type = Object.class;
+---
+>             throw new IllegalArgumentException("Arguments cannot both be null");            
+3574c3574
+<             return (T[]) new Object[] { null };
+---
+>             throw new IllegalArgumentException("Array and element cannot both be null");            
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/4
+VersionID : 4
+results : 
+working : True
+LookupTranslator.java : 31c31
+<     private final HashMap<CharSequence, CharSequence> lookupMap;
+---
+>     private final HashMap<String, CharSequence> lookupMap;
+46c46
+<         lookupMap = new HashMap<CharSequence, CharSequence>();
+---
+>         lookupMap = new HashMap<String, CharSequence>();
+51c51
+<                 this.lookupMap.put(seq[0], seq[1]);
+---
+>                 this.lookupMap.put(seq[0].toString(), seq[1]);
+77c77
+<             final CharSequence result = lookupMap.get(subSeq);
+---
+>             final CharSequence result = lookupMap.get(subSeq.toString());
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/5
+VersionID : 5
+results : 
+working : True
+LocaleUtils.java : 96a97,116
+>         if (ch0 == '_') {
+>             if (len < 3) {
+>                 throw new IllegalArgumentException("Invalid locale format: " + str);
+>             }
+>             final char ch1 = str.charAt(1);
+>             final char ch2 = str.charAt(2);
+>             if (!Character.isUpperCase(ch1) || !Character.isUpperCase(ch2)) {
+>                 throw new IllegalArgumentException("Invalid locale format: " + str);
+>             }
+>             if (len == 3) {
+>                 return new Locale("", str.substring(1, 3));
+>             }
+>             if (len < 5) {
+>                 throw new IllegalArgumentException("Invalid locale format: " + str);
+>             }
+>             if (str.charAt(3) != '_') {
+>                 throw new IllegalArgumentException("Invalid locale format: " + str);
+>             }
+>             return new Locale("", str.substring(1, 3), str.substring(4));
+>         } else {
+127a148
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/6
+VersionID : 6
+results : 
+working : True
+CharSequenceTranslator.java : 95c95
+<                 pos += Character.charCount(Character.codePointAt(input, pos));
+---
+>                 pos += Character.charCount(Character.codePointAt(input, pt));
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/7
+VersionID : 7
+results : 
+working : True
+NumberUtils.java : 452,454d451
+<         if (str.startsWith("--")) {
+<             return null;
+<         }
+720a718
+>         if (str.trim().startsWith("--")) {
+724a723,724
+>             throw new NumberFormatException(str + " is not a valid number.");
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/8
+VersionID : 8
+results : 
+working : True
+FastDatePrinter.java : 1098d1097
+<         private final TimeZone zone;
+1112d1110
+<             zone = timeZone;
+1133a1132
+>             TimeZone zone = calendar.getTimeZone();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Lang/9
+VersionID : 9
+results : 
+working : True
+FastDateParser.java : 143a144,146
+>         if (patternMatcher.regionStart() != patternMatcher.regionEnd()) {
+>             throw new IllegalArgumentException("Failed to parse \""+pattern+"\" ; gave up at index "+patternMatcher.regionStart());
+>         }
+

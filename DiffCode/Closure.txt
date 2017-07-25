@@ -1,0 +1,2113 @@
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/1
+VersionID : 1
+results : 
+working : True
+RemoveUnusedVars.java : 378a379,381
+>     if (!removeGlobals) {
+>       return;
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/10
+VersionID : 10
+results : 
+working : True
+NodeUtil.java : 1417c1417
+<       return allResultsMatch(n, MAY_BE_STRING_PREDICATE);
+---
+>       return anyResultsMatch(n, MAY_BE_STRING_PREDICATE);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/100
+VersionID : 100
+results : 
+working : True
+CheckGlobalThis.java : 98a99,105
+>       int pType = parent.getType();
+>       if (!(pType == Token.BLOCK ||
+>             pType == Token.SCRIPT ||
+>             pType == Token.NAME ||
+>             pType == Token.ASSIGN)) {
+>         return false;
+>       }
+146c153
+<     return false;
+---
+>     return parent != null && NodeUtil.isGet(parent);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/101
+VersionID : 101
+results : 
+working : True
+CommandLineRunner.java : 433,435d432
+<     if (flags.process_closure_primitives) {
+<       options.closurePass = true;
+<     }
+436a434
+>     options.closurePass = flags.process_closure_primitives;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/102
+VersionID : 102
+results : 
+working : True
+Normalize.java : 88a89
+>     removeDuplicateDeclarations(root);
+94d94
+<     removeDuplicateDeclarations(root);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/103
+VersionID : 103
+results : 
+working : True
+ControlFlowAnalysis.java : 893a894
+>       case Token.INSTANCEOF:
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/103
+VersionID : 103
+results : 
+working : True
+DisambiguateProperties.java : 762a763,765
+>       if (foundType == null) {
+>         ObjectType maybeType = ObjectType.cast(
+>             registry.getGreatestSubtypeWithProperty(type, field));
+765a769,772
+>         if (maybeType != null && maybeType.hasOwnProperty(field)) {
+>           foundType = maybeType;
+>         }
+>       }
+
+ControlFlowAnalysis.java : 893a894
+>       case Token.INSTANCEOF:
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/104
+VersionID : 104
+results : 
+working : True
+UnionType.java : 291c291
+<     if (result != null) {
+---
+>     if (!result.isNoType()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/105
+VersionID : 105
+results : 
+working : True
+FoldConstants.java : 1477c1477
+<     StringBuilder sb = new StringBuilder();
+---
+>     StringBuilder sb = null;
+1483c1483,1485
+<         if (sb.length() > 0) {
+---
+>         if (sb == null) {
+>           sb = new StringBuilder();
+>         } else {
+1488c1490
+<         if (sb.length() > 0) {
+---
+>         if (sb != null) {
+1492c1494
+<           sb = new StringBuilder();
+---
+>           sb = null;
+1500c1502
+<     if (sb.length() > 0) {
+---
+>     if (sb != null) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/106
+VersionID : 106
+results : 
+working : True
+GlobalNamespace.java : 906a907,910
+>       Preconditions.checkNotNull(declaration);
+>       if (declaration.getTwin() != null) {
+>         return false;
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/106
+VersionID : 106
+results : 
+working : True
+GlobalNamespace.java : 906a907,910
+>       Preconditions.checkNotNull(declaration);
+>       if (declaration.getTwin() != null) {
+>         return false;
+>       }
+
+JSDocInfoBuilder.java : 189d188
+<     if (parseDocumentation) {
+191d189
+<     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/107
+VersionID : 107
+results : 
+working : True
+CommandLineRunner.java : 861a862
+>       options.setWarningLevel(JsMessageVisitor.MSG_CONVENTIONS, CheckLevel.OFF);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/108
+VersionID : 108
+results : 
+working : True
+ScopedAliases.java : 258a259
+>     private final Set<Node> injectedDecls = Sets.newHashSet();
+315a317
+>         injectedDecls.clear();
+431a434
+>             injectedDecls.add(newDecl.getFirstChild());
+581c584
+<         if (info != null) {
+---
+>         if (info != null && !injectedDecls.contains(n)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/109
+VersionID : 109
+results : 
+working : True
+JsDocInfoParser.java : 1908c1908,1912
+<           return parseTypeName(token);
+---
+>     if (token == JsDocToken.QMARK) {
+>       return newNode(Token.QMARK);
+>     } else {
+>       return parseBasicTypeExpression(token);
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/11
+VersionID : 11
+results : 
+working : True
+TypeCheck.java : 1314,1315d1313
+<     } else if (n.getJSType() != null && parent.isAssign()) {
+<       return;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/110
+VersionID : 110
+results : 
+working : True
+Node.java : 553a554,556
+>     if (n == null) {
+>       throw new RuntimeException("node is not a child");
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/110
+VersionID : 110
+results : 
+working : True
+Node.java : 553a554,556
+>     if (n == null) {
+>       throw new RuntimeException("node is not a child");
+>     }
+
+ScopedAliases.java : 357a358
+>         boolean isFunctionDecl = NodeUtil.isFunctionDeclaration(parent);
+366c367,368
+<         } else if (isVar) {
+---
+>         } else if (isVar || isFunctionDecl) {
+>           boolean isHoisted = NodeUtil.isHoistedFunctionDeclaration(parent);
+368,369c370,371
+<           Node value = n.hasChildren() ?
+<               v.getInitialValue().detachFromParent() :
+---
+>           Node value = v.getInitialValue() != null ?
+>               v.getInitialValue() :
+371c373
+<           Node varNode = parent;
+---
+>           Node varNode = null;
+382a385
+>           if (isFunctionDecl) {
+383a387
+>             Node existingName = v.getNameNode();
+391a396,397
+>             Node newName = IR.name("").useSourceInfoFrom(existingName);
+>             value.replaceChild(existingName, newName);
+392a399,402
+>             varNode = IR.var(existingName).useSourceInfoFrom(existingName);
+>             grandparent.replaceChild(parent, varNode);
+>           } else {
+>             if (value != null) {
+394a405,408
+>               value.detachFromParent();
+>             }
+>             varNode = parent;
+>           }
+407a422,424
+>             if (isHoisted) {
+>               grandparent.addChildToFront(newDecl);
+>             } else {
+408a426
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/111
+VersionID : 111
+results : 
+working : True
+ClosureReverseAbstractInterpreter.java : 54c54,55
+<           return topType;
+---
+>           return topType.isAllType() ?
+>               getNativeType(ARRAY_TYPE) : topType;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/112
+VersionID : 112
+results : 
+working : True
+TypeInference.java : 1192,1194c1192,1200
+<     Map<TemplateType, JSType> inferred = 
+<         inferTemplateTypesFromParameters(fnType, n);
+< 
+---
+>     Map<TemplateType, JSType> inferred = Maps.filterKeys(
+>         inferTemplateTypesFromParameters(fnType, n),
+>         new Predicate<TemplateType>() {
+> 
+>           @Override
+>           public boolean apply(TemplateType key) {
+>             return keys.contains(key);
+>           }}
+>         );
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/113
+VersionID : 113
+results : 
+working : True
+ProcessClosurePrimitives.java : 329c329
+<       if (provided != null) {
+---
+>       if (provided != null || requiresLevel.isOn()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/114
+VersionID : 114
+results : 
+working : True
+NameAnalyzer.java : 578c578
+<         } else {
+---
+>         } else if (!(parent.isCall() && parent.getFirstChild() == n)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/115
+VersionID : 115
+results : 
+working : True
+FunctionInjector.java : 697,704d696
+<     boolean hasSideEffects = false;
+<     if (block.hasChildren()) {
+<       Preconditions.checkState(block.hasOneChild());
+<       Node stmt = block.getFirstChild();
+<       if (stmt.isReturn()) {
+<         hasSideEffects = NodeUtil.mayHaveSideEffects(stmt.getFirstChild(), compiler);
+<       }
+<     }
+730,732d721
+<           if (hasSideEffects && NodeUtil.canBeSideEffected(cArg)) {
+<             return CanInlineResult.NO;
+<           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/116
+VersionID : 116
+results : 
+working : True
+FunctionInjector.java : 696a697,705
+>     boolean hasSideEffects = false;  // empty function case
+>     if (block.hasChildren()) {
+>       Preconditions.checkState(block.hasOneChild());
+>       Node stmt = block.getFirstChild();
+>       if (stmt.isReturn()) {
+>         hasSideEffects = NodeUtil.mayHaveSideEffects(
+>             stmt.getFirstChild(), compiler);
+>       }
+>     }
+722a732,734
+>           if (hasSideEffects && NodeUtil.canBeSideEffected(cArg)) {
+>             return CanInlineResult.NO;
+>           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/117
+VersionID : 117
+results : 
+working : True
+TypeValidator.java : 724a725,731
+>     JSType type = getJSType(n);
+>     if (dereference) {
+>       ObjectType dereferenced = type.dereference();
+>       if (dereferenced != null) {
+>         type = dereferenced;
+>       }
+>     }
+726a734,738
+>     if (type.isFunctionPrototypeType() ||
+>         (type.toObjectType() != null &&
+>          type.toObjectType().getConstructor() != null)) {
+>       return type.toString();
+>     }
+756,767d767
+<     JSType type = getJSType(n);
+<     if (dereference) {
+<       ObjectType dereferenced = type.dereference();
+<       if (dereferenced != null) {
+<         type = dereferenced;
+<       }
+<     }
+<     if (type.isFunctionPrototypeType() ||
+<         (type.toObjectType() != null &&
+<          type.toObjectType().getConstructor() != null)) {
+<       return type.toString();
+<     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/118
+VersionID : 118
+results : 
+working : True
+DisambiguateProperties.java : 494a495,497
+>         if (child.isQuotedString()) {
+>           continue;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/119
+VersionID : 119
+results : 
+working : True
+GlobalNamespace.java : 365a366
+>               case Token.CATCH:
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/12
+VersionID : 12
+results : 
+working : True
+MaybeReachingVariableUse.java : 159a160,165
+>     List<DiGraphEdge<Node, Branch>> branchEdges = getCfg().getOutEdges(cfgNode);
+>     for (DiGraphEdge<Node, Branch> edge : branchEdges) {
+>       if (edge.getValue() == Branch.ON_EX) {
+>         return true;
+>       }
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/120
+VersionID : 120
+results : 
+working : True
+ReferenceCollectingCallback.java : 430a431,433
+>           if (ref.getSymbol().getScope() != ref.scope) {
+>             return false;
+>           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/121
+VersionID : 121
+results : 
+working : True
+InlineVariables.java : 304c304
+<           referenceInfo.isAssignedOnceInLifetime()) {
+---
+>           referenceInfo.isAssignedOnceInLifetime() &&
+307a308,309
+>           (isInlineableDeclaredConstant(v, referenceInfo) ||
+>            referenceInfo.isOnlyAssignmentSameScopeAsDeclaration())) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/122
+VersionID : 122
+results : 
+working : True
+IRFactory.java : 252c252,253
+<     if (comment.getValue().indexOf("/* @") != -1 || comment.getValue().indexOf("\n * @") != -1) {
+---
+>     Pattern p = Pattern.compile("(/|(\n[ \t]*))\\*[ \t]*@[a-zA-Z]");
+>     if (p.matcher(comment.getValue()).find()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/123
+VersionID : 123
+results : 
+working : True
+CodeGenerator.java : 285c285
+<         Context rhsContext = Context.OTHER;
+---
+>         Context rhsContext = getContextForNoInOperator(context);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/124
+VersionID : 124
+results : 
+working : True
+ExploitAssigns.java : 212a213
+>     while (node.isGetProp()) {
+213a215
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/125
+VersionID : 125
+results : 
+working : True
+TypeCheck.java : 1661c1661
+<       if (fnType != null) {
+---
+>       if (fnType != null && fnType.hasInstanceType()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/126
+VersionID : 126
+results : 
+working : True
+MinimizeExitPoints.java : 141,144d140
+<       if (NodeUtil.hasFinally(n)) {
+<         Node finallyBlock = n.getLastChild();
+<         tryMinimizeExits(finallyBlock, exitType, labelName);
+<       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/127
+VersionID : 127
+results : 
+working : True
+UnreachableCodeElimination.java : 170c170
+<             if (nextCfgNode == fallThrough) {
+---
+>             if (nextCfgNode == fallThrough && !inFinally(n.getParent(), n)) {
+176a177,185
+>     private boolean inFinally(Node parent, Node child) {
+>       if (parent == null || parent.isFunction()) {
+>         return false;
+>       } else if (NodeUtil.isTryFinallyNode(parent, child)) {
+>         return true;
+>       } else {
+>         return inFinally(parent.getParent(), parent);
+>       }
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/128
+VersionID : 128
+results : 
+working : True
+CodeGenerator.java : 784a785,787
+>     if (len == 0) {
+>       return false;
+>     }
+791c794
+<     return len > 0 && s.charAt(0) != '0';
+---
+>     return len == 1 || s.charAt(0) != '0';
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/129
+VersionID : 129
+results : 
+working : True
+PrepareAst.java : 165a166,168
+>       while (first.isCast()) {
+>         first = first.getFirstChild();
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/13
+VersionID : 13
+results : 
+working : True
+PeepholeOptimizationsPass.java : 126d125
+<         traverse(c);
+127a127
+>         traverse(c);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/130
+VersionID : 130
+results : 
+working : True
+CollapseProperties.java : 172c172
+<       if (name.globalSets == 1 && name.localSets == 0 &&
+---
+>       if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 &&
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/131
+VersionID : 131
+results : 
+working : True
+TokenStream.java : 193a194
+>           Character.isIdentifierIgnorable(s.charAt(0)) ||
+199c200
+<         if (
+---
+>         if (Character.isIdentifierIgnorable(s.charAt(i)) ||
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/132
+VersionID : 132
+results : 
+working : True
+PeepholeSubstituteAlternateSyntax.java : 782c782,784
+<               !mayEffectMutableState(lhs)) {
+---
+>               !mayEffectMutableState(lhs) &&
+>               (!mayHaveSideEffects(cond) ||
+>                   (thenOp.isAssign() && thenOp.getFirstChild().isName()))) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/133
+VersionID : 133
+results : 
+working : True
+JsDocInfoParser.java : 2400a2401
+>     unreadToken = NO_UNREAD_TOKEN;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/14
+VersionID : 14
+results : 
+working : True
+ControlFlowAnalysis.java : 767c767
+<               cfa.createEdge(fromNode, Branch.UNCOND, finallyNode);
+---
+>               cfa.createEdge(fromNode, Branch.ON_EX, finallyNode);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/15
+VersionID : 15
+results : 
+working : True
+FlowSensitiveInlineVariables.java : 101a102,104
+>         if (n.isDelProp()) {
+>           return true;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/16
+VersionID : 16
+results : 
+working : True
+ScopedAliases.java : 169a170
+>     private final Node aliasDefinition;
+172c173
+<     AliasedTypeNode(Node typeReference,
+---
+>     AliasedTypeNode(Node typeReference, Node aliasDefinition,
+174a176
+>       this.aliasDefinition = aliasDefinition;
+180c182,186
+<       typeReference.setString(aliasName);
+---
+>       String typeName = typeReference.getString();
+>       String aliasExpanded =
+>           Preconditions.checkNotNull(aliasDefinition.getQualifiedName());
+>       Preconditions.checkState(typeName.startsWith(aliasName));
+>       typeReference.setString(typeName.replaceFirst(aliasName, aliasExpanded));
+468c474
+<           aliasUsages.add(new AliasedTypeNode(typeNode, aliasedNode.getQualifiedName() + name.substring(endIndex)));
+---
+>           aliasUsages.add(new AliasedTypeNode(typeNode, aliasedNode, baseName));
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/17
+VersionID : 17
+results : 
+working : True
+TypedScopeCreator.java : 1291c1291,1292
+<               if (rValue.getJSType() != null && !rValue.getJSType().isUnknownType()) {
+---
+>               JSDocInfo rValueInfo = rValue.getJSDocInfo();
+>               if (rValueInfo != null && rValueInfo.hasType()) {
+1292a1294,1296
+>                 return rValueInfo.getType().evaluate(scope, typeRegistry);
+>               } else if (rValue.getJSType() != null
+>                   && !rValue.getJSType().isUnknownType()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/18
+VersionID : 18
+results : 
+working : True
+Compiler.java : 1288c1288
+<       if (options.dependencyOptions.needsManagement() && options.closurePass) {
+---
+>       if (options.dependencyOptions.needsManagement()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/19
+VersionID : 19
+results : 
+working : True
+ChainableReverseAbstractInterpreter.java : 171a172
+>       case Token.THIS:
+172a174
+>         break;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/2
+VersionID : 2
+results : 
+working : True
+TypeCheck.java : 1571a1572
+>     if (implicitProto == null) {
+1573a1575,1576
+>       currentPropertyNames = ImmutableSet.of();
+>     } else {
+1574a1578
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/20
+VersionID : 20
+results : 
+working : True
+PeepholeSubstituteAlternateSyntax.java : 220c220,221
+<       if (value != null) {
+---
+>       if (value != null && value.getNext() == null &&
+>           NodeUtil.isImmutableValue(value)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/21
+VersionID : 21
+results : 
+working : True
+CheckSideEffects.java : 101c101
+<     if (n.isExprResult()) {
+---
+>     if (n.isExprResult() || n.isBlock()) {
+113,130c113
+<     if (parent.getType() == Token.COMMA) {
+<       if (isResultUsed) {
+<         return;
+<       }
+<       if (n == parent.getLastChild()) {
+<         for (Node an : parent.getAncestors()) {
+<           int ancestorType = an.getType();
+<           if (ancestorType == Token.COMMA) continue;
+<           if (ancestorType != Token.EXPR_RESULT && ancestorType != Token.BLOCK) return;
+<           else break;
+<         }
+<       }
+<     } else if (parent.getType() != Token.EXPR_RESULT && parent.getType() != Token.BLOCK) {
+<       if (! (parent.getType() == Token.FOR && parent.getChildCount() == 4 && (n == parent.getFirstChild() || n == parent.getFirstChild().getNext().getNext()))) {
+<         return;
+<       }
+<     }
+<     if (
+---
+>     if (!isResultUsed &&
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/22
+VersionID : 22
+results : 
+working : True
+CheckSideEffects.java : 101,104c101
+<     if (parent.getType() == Token.COMMA) {
+<       Node gramps = parent.getParent();
+<       if (gramps.isCall() && parent == gramps.getFirstChild()) {
+<         if (n == parent.getFirstChild() && parent.getChildCount() == 2 && n.getNext().isName() && "eval".equals(n.getNext().getString())) {
+---
+>     if (n.isExprResult() || n.isBlock()) {
+106d102
+<         }
+111,125c107
+<       if (n == parent.getLastChild()) {
+<         for (Node an : parent.getAncestors()) {
+<           int ancestorType = an.getType();
+<           if (ancestorType == Token.COMMA)
+<             continue;
+<           if (ancestorType != Token.EXPR_RESULT && ancestorType != Token.BLOCK)
+<             return;
+<           else
+<             break;
+<         }
+<       }
+<     } else if (parent.getType() != Token.EXPR_RESULT && parent.getType() != Token.BLOCK) {
+<       if (parent.getType() == Token.FOR && parent.getChildCount() == 4 && (n == parent.getFirstChild() ||
+<            n == parent.getFirstChild().getNext().getNext())) {
+<       } else {
+---
+>     if (n.isQualifiedName() && n.getJSDocInfo() != null) {
+127d108
+<       }
+134,138d114
+<       if (n.isQualifiedName() && n.getJSDocInfo() != null) {
+<         return;
+<       } else if (n.isExprResult()) {
+<         return;
+<       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/23
+VersionID : 23
+results : 
+working : True
+PeepholeFoldConstants.java : 1451c1451,1456
+<     for (int i = 0; current != null && i < intIndex; i++) {
+---
+>     for (int i = 0; current != null; i++) {
+>       if (i != intIndex) {
+>         if (mayHaveSideEffects(current)) {
+>           return n;
+>         }
+>       } else {
+1452a1458
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/24
+VersionID : 24
+results : 
+working : True
+ScopedAliases.java : 278,279c278,279
+<         if (parent.isVar()) {
+<           if (n.hasChildren() && n.getFirstChild().isQualifiedName()) {
+---
+>         if (parent.isVar() &&
+>             n.hasChildren() && n.getFirstChild().isQualifiedName()) {
+286a287
+>         } else if (v.isBleedingFunction()) {
+288a290
+>         } else if (parent.getType() == Token.LP) {
+295d296
+<         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/25
+VersionID : 25
+results : 
+working : True
+TypeInference.java : 1035a1036
+>     scope = traverseChildren(n, scope);
+1038d1038
+<     scope = traverse(constructor, scope);
+1054a1055
+>           backwardsInferenceFromCallSite(n, ct);
+1059,1061d1059
+<     for (Node arg = constructor.getNext(); arg != null; arg = arg.getNext()) {
+<       scope = traverse(arg, scope);
+<     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/26
+VersionID : 26
+results : 
+working : True
+ProcessCommonJSModules.java : 127a128
+>     private Set<String> modulesWithExports = Sets.newHashSet();
+206a208,210
+>       if (!modulesWithExports.contains(moduleName)) {
+>         return;
+>       }
+227a232
+>       modulesWithExports.add(moduleName);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/27
+VersionID : 27
+results : 
+working : True
+IR.java : 110a111,113
+>   private static Node blockUnchecked(Node stmt) {
+>     return new Node(Token.BLOCK, stmt);
+>   }
+224,225c227,228
+<     Preconditions.checkState(tryBody.isLabelName());
+<     Preconditions.checkState(finallyBody.isLabelName());
+---
+>     Preconditions.checkState(tryBody.isBlock());
+>     Preconditions.checkState(finallyBody.isBlock());
+233c236
+<     Node catchBody = block(catchNode).copyInformationFrom(catchNode);
+---
+>     Node catchBody = blockUnchecked(catchNode).copyInformationFrom(catchNode);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/28
+VersionID : 28
+results : 
+working : True
+InlineCostEstimator.java : 101a102,105
+>     @Override
+>     void addConstant(String newcode) {
+>       add("0");
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/29
+VersionID : 29
+results : 
+working : True
+InlineObjectLiterals.java : 156a157
+>       Set<String> validProperties = Sets.newHashSet();
+180a182,189
+>           String propName = parent.getLastChild().getString();
+>           if (!validProperties.contains(propName)) {
+>             if (NodeUtil.isVarOrSimpleAssignLhs(parent, gramps)) {
+>               validProperties.add(propName);
+>             } else {
+>               return false;
+>             }
+>           }
+215a225
+>           validProperties.add(child.getString());
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/3
+VersionID : 3
+results : 
+working : True
+FlowSensitiveInlineVariables.java : 155c155
+<       if (c.canInline()) {
+---
+>       if (c.canInline(t.getScope())) {
+280c280
+<     private boolean canInline() {
+---
+>     private boolean canInline(final Scope scope) {
+374a375,380
+>                   case Token.NAME:
+>                     Var var = scope.getOwnSlot(input.getString());
+>                     if (var != null
+>                         && var.getParentNode().isCatch()) {
+>                       return true;
+>                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/30
+VersionID : 30
+results : 
+working : True
+FlowSensitiveInlineVariables.java : 157c157
+<     (new NodeTraversal(compiler, this)).traverse(root);
+---
+>     (new NodeTraversal(compiler, this)).traverseRoots(externs, root);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/30
+VersionID : 30
+results : 
+working : True
+MustBeReachingVariableDef.java : 70a71
+>     private boolean unknownDependencies = false;
+396c397
+<         if (n.isName() && jsScope.isDeclared(n.getString(), true)) {
+---
+>         if (n.isName()) {
+397a399,401
+>           if (dep == null) {
+>             def.unknownDependencies = true;
+>           } else {
+398a403
+>           }
+429a435,437
+>     if (def.unknownDependencies) {
+>       return true;
+>     }
+
+FlowSensitiveInlineVariables.java : 157c157
+<     (new NodeTraversal(compiler, this)).traverse(root);
+---
+>     (new NodeTraversal(compiler, this)).traverseRoots(externs, root);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/31
+VersionID : 31
+results : 
+working : True
+Compiler.java : 1285d1284
+<           !options.skipAllPasses &&
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/32
+VersionID : 32
+results : 
+working : True
+JsDocInfoParser.java : 1357a1358
+>     int lineStartChar = -1;
+1363a1365
+>             lineStartChar = stream.getCharno() + 1;
+1381a1384
+>           lineStartChar = 0;
+1388a1392,1400
+>           boolean isEOC = token == JsDocToken.EOC;
+>           if (!isEOC) {
+>             if (lineStartChar != -1 && option == WhitespaceOption.PRESERVE) {
+>               int numSpaces = stream.getCharno() - lineStartChar;
+>               for (int i = 0; i < numSpaces; i++) {
+>                 builder.append(' ');
+>               }
+>               lineStartChar = -1;
+>             } else if (builder.length() > 0) {
+1389a1402,1404
+>               builder.append(' ');
+>             }
+>           }
+1414,1416d1428
+<           if (builder.length() > 0) {
+<             builder.append(' ');
+<           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/33
+VersionID : 33
+results : 
+working : True
+PrototypeObjectType.java : 556a557,559
+>     if (hasReferenceName()) {
+>       return;
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/34
+VersionID : 34
+results : 
+working : True
+CodeGenerator.java : 122,124c122
+<         addExpr(first, p, context);
+<         cc.addOp(opstr, true);
+<         addExpr(last, p + 1, rhsContext);
+---
+>         unrollBinaryOperator(n, type, opstr, context, rhsContext, p, p + 1);
+754c752
+<       cc.listSeparator();
+---
+>       cc.addOp(opStr, true);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/34
+VersionID : 34
+results : 
+working : True
+CodePrinter.java : 334c334
+<         if (getLastChar() != ' ') {
+---
+>         if (getLastChar() != ' ' && op.charAt(0) != ',') {
+
+CodeGenerator.java : 122,124c122
+<         addExpr(first, p, context);
+<         cc.addOp(opstr, true);
+<         addExpr(last, p + 1, rhsContext);
+---
+>         unrollBinaryOperator(n, type, opstr, context, rhsContext, p, p + 1);
+754c752
+<       cc.listSeparator();
+---
+>       cc.addOp(opStr, true);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/35
+VersionID : 35
+results : 
+working : True
+TypeInference.java : 1121,1135c1121,1122
+<     if (constraintObj != null && constraintObj.isRecordType()) {
+<       ObjectType objType = ObjectType.cast(type.restrictByNotNullOrUndefined());
+<       if (objType != null) {
+<         for (String prop : constraintObj.getOwnPropertyNames()) {
+<           JSType propType = constraintObj.getPropertyType(prop);
+<           if (!objType.isPropertyTypeDeclared(prop)) {
+<             JSType typeToInfer = propType;
+<             if (!objType.hasProperty(prop)) {
+<               typeToInfer =
+<                   getNativeType(VOID_TYPE).getLeastSupertype(propType);
+<             }
+<             objType.defineInferredProperty(prop, typeToInfer, null);
+<           }
+<         }
+<       }
+---
+>     if (constraintObj != null) {
+>       type.matchConstraint(constraintObj);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/36
+VersionID : 36
+results : 
+working : True
+InlineVariables.java : 574a575,577
+>           if (convention.getSingletonGetterClassName(callNode) != null) {
+>             return false;
+>           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/37
+VersionID : 37
+results : 
+working : True
+IRFactory.java : 666a667
+>       if (!bodyNode.isBlock()) {
+669a671,673
+>         Preconditions.checkState(config.isIdeMode);
+>         bodyNode = IR.block();
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/37
+VersionID : 37
+results : 
+working : True
+NodeTraversal.java : 541c541
+<             body.isBlock());
+---
+>             body.isBlock(), body);
+
+IRFactory.java : 666a667
+>       if (!bodyNode.isBlock()) {
+669a671,673
+>         Preconditions.checkState(config.isIdeMode);
+>         bodyNode = IR.block();
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/38
+VersionID : 38
+results : 
+working : True
+CodeConsumer.java : 245c245
+<     if (x < 0 && prev == '-') {
+---
+>     if ((x < 0 || negativeZero) && prev == '-') {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/39
+VersionID : 39
+results : 
+working : True
+PrototypeObjectType.java : 380c380
+<         sb.append(getPropertyType(property).toString());
+---
+>         sb.append(getPropertyType(property).toStringHelper(forAnnotations));
+383c383
+<         if (i == MAX_PRETTY_PRINTED_PROPERTIES) {
+---
+>         if (!forAnnotations && i == MAX_PRETTY_PRINTED_PROPERTIES) {
+394c394
+<       return "{...}";
+---
+>       return forAnnotations ? "?" : "{...}";
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/4
+VersionID : 4
+results : 
+working : True
+NamedType.java : 190c190
+<     if (detectImplicitPrototypeCycle()) {
+---
+>     if (detectInheritanceCycle()) {
+202c202
+<     if (detectImplicitPrototypeCycle()) {
+---
+>     if (detectInheritanceCycle()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/40
+VersionID : 40
+results : 
+working : True
+NameAnalyzer.java : 635,636c635
+<           JsName name = getName(ns.name, false);
+<           if (name != null) {
+---
+>           JsName name = getName(ns.name, true);
+639d637
+<           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/41
+VersionID : 41
+results : 
+working : True
+FunctionTypeBuilder.java : 291a292,294
+>       while (oldParams.hasNext()) {
+>         paramBuilder.newParameterFromNode(oldParams.next());
+>       }
+482a486,491
+>     if (!isVarArgs) {
+>       while (oldParameterType != null && !isVarArgs) {
+>         builder.newParameterFromNode(oldParameterType);
+>         oldParameterType = oldParameterType.getNext();
+>       }
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/42
+VersionID : 42
+results : 
+working : True
+IRFactory.java : 567a568,572
+>       if (loopNode.isForEach()) {
+>         errorReporter.error(
+>             "unsupported language extension: for each",
+>             sourceName,
+>             loopNode.getLineno(), "", 0);
+569a575,576
+>         return newNode(Token.EXPR_RESULT, Node.newNumber(0));
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/43
+VersionID : 43
+results : 
+working : True
+TypedScopeCreator.java : 419a420
+>     private List<Node> lentObjectLiterals = null;
+546a548,554
+>       if (n.getParent() != null && NodeUtil.isStatement(n) &&
+>           lentObjectLiterals != null) {
+>         for (Node objLit : lentObjectLiterals) {
+>           defineObjectLiteral(objLit);
+>         }
+>         lentObjectLiterals.clear();
+>       }
+579a588,595
+>           JSDocInfo info = n.getJSDocInfo();
+>           if (info != null &&
+>               info.getLendsName() != null) {
+>             if (lentObjectLiterals == null) {
+>               lentObjectLiterals = Lists.newArrayList();
+>             }
+>             lentObjectLiterals.add(n);
+>           } else {
+580a597
+>           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/44
+VersionID : 44
+results : 
+working : True
+CodeConsumer.java : 193a194
+>     } else if (c == '/' && getLastChar() == '/') {
+198a200
+>       append(" ");
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/45
+VersionID : 45
+results : 
+working : True
+RemoveUnusedVars.java : 731a732
+>           boolean maybeEscaped = false;
+738a740,742
+>             if (assign.maybeAliased) {
+>               maybeEscaped = true;
+>             }
+741c745
+<           if (assignedToUnknownValue && hasPropertyAssign) {
+---
+>           if ((assignedToUnknownValue || maybeEscaped) && hasPropertyAssign) {
+904c908
+<       this.maybeAliased = !assignNode.getParent().isExprResult();
+---
+>       this.maybeAliased = NodeUtil.isExpressionResultUsed(assignNode);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/46
+VersionID : 46
+results : 
+working : True
+RecordType.java : 140,155d139
+<   @Override
+<   public JSType getLeastSupertype(JSType that) {
+<     if (!that.isRecordType()) {
+<       return super.getLeastSupertype(that);
+<     }
+<     RecordTypeBuilder builder = new RecordTypeBuilder(registry);
+<     for (String property : properties.keySet()) {
+<       if (that.toMaybeRecordType().hasProperty(property) &&
+<           that.toMaybeRecordType().getPropertyType(property).isEquivalentTo(
+<               getPropertyType(property))) {
+<         builder.addProperty(property, getPropertyType(property),
+<             getPropertyNode(property));
+<       }
+<     }
+<     return builder.build();
+<   }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/47
+VersionID : 47
+results : 
+working : True
+SourceMap.java : 137a138,142
+>     int lineBaseOffset = 1;
+>     if (generator instanceof SourceMapGeneratorV1
+>         || generator instanceof SourceMapGeneratorV2) {
+>       lineBaseOffset = 0;
+>     }
+141c146
+<         new FilePosition(node.getLineno(), node.getCharno()),
+---
+>         new FilePosition(node.getLineno() - lineBaseOffset, node.getCharno()),
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/47
+VersionID : 47
+results : 
+working : True
+SourceMapConsumerV3.java : 489,490c489,490
+<         .setLineNumber(entry.getSourceLine())
+<         .setColumnPosition(entry.getSourceColumn());
+---
+>         .setLineNumber(entry.getSourceLine() + 1)
+>         .setColumnPosition(entry.getSourceColumn() + 1);
+
+SourceMap.java : 137a138,142
+>     int lineBaseOffset = 1;
+>     if (generator instanceof SourceMapGeneratorV1
+>         || generator instanceof SourceMapGeneratorV2) {
+>       lineBaseOffset = 0;
+>     }
+141c146
+<         new FilePosition(node.getLineno(), node.getCharno()),
+---
+>         new FilePosition(node.getLineno() - lineBaseOffset, node.getCharno()),
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/48
+VersionID : 48
+results : 
+working : True
+TypedScopeCreator.java : 1521c1521
+<       if (inferred) {
+---
+>       if (inferred && rhsValue != null && rhsValue.isFunction()) {
+1523,1525c1523,1528
+<         inferred = !(rhsValue != null &&
+<             rhsValue.isFunction() &&
+<             (info != null || !scope.isDeclared(qName, false)));
+---
+>         if (info != null) {
+>           inferred = false;
+>         } else if (!scope.isDeclared(qName, false) &&
+>                    n.isUnscopedQualifiedName()) {
+>           inferred = false;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/49
+VersionID : 49
+results : 
+working : True
+MakeDeclaredNamesUnique.java : 91,98d90
+<     if (declarationRoot.getType() == Token.FUNCTION) {
+<       for (Node c = declarationRoot.getFirstChild().getNext().getFirstChild(); c != null; c = c.getNext()) {
+<         String name = c.getString();
+<         renamer.addDeclaredName(name);
+<       }
+<       Node functionBody = declarationRoot.getLastChild();
+<       findDeclaredNames(functionBody, null, renamer);
+<     }  else 
+129a122,124
+>           nameStack.push(renamer);
+>         }
+>         break;
+130a126,127
+>       case Token.LP: {
+>           Renamer renamer = nameStack.peek().forChildScope();
+132a130,133
+>           for (Node c = n.getFirstChild(); c != null; c = c.getNext()) {
+>             String name = c.getString();
+>             renamer.addDeclaredName(name);
+>           }
+134a136,137
+>           Node functionBody = n.getNext();
+>           findDeclaredNames(functionBody, null, renamer);
+172a176
+>         nameStack.pop();
+176a181
+>       case Token.LP:
+179a185
+>         break;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/5
+VersionID : 5
+results : 
+working : True
+InlineObjectLiterals.java : 175a176,178
+>           if (gramps.isDelProp()) {
+>             return false;
+>           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/50
+VersionID : 50
+results : 
+working : True
+PeepholeReplaceKnownMethods.java : 376c376
+<       if (!NodeUtil.isImmutableValue(right)) {
+---
+>       if (right.getNext() != null || !NodeUtil.isImmutableValue(right)) {
+388a389,390
+>     if (right != null && right.getType() == Token.STRING
+>         && ",".equals(right.getString())) {
+389a392,394
+>       n.removeChild(right);
+>       reportCodeChange();
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/51
+VersionID : 51
+results : 
+working : True
+CodeConsumer.java : 241c241
+<     if ((long) x == x) {
+---
+>     if ((long) x == x && !isNegativeZero(x)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/52
+VersionID : 52
+results : 
+working : True
+CodeGenerator.java : 745c745
+<     return len > 0;
+---
+>     return len > 0 && s.charAt(0) != '0';
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/53
+VersionID : 53
+results : 
+working : True
+InlineObjectLiterals.java : 330a331,333
+>       if (nodes.isEmpty()) {
+>         replacement = new Node(Token.TRUE);
+>       } else {
+349a353
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/54
+VersionID : 54
+results : 
+working : True
+FunctionType.java : 341d340
+<         baseType.isUnknownType() ||
+366c365,366
+<     boolean replacedPrototype = prototype != null;
+---
+>     PrototypeObjectType oldPrototype = this.prototype;
+>     boolean replacedPrototype = oldPrototype != null;
+371a372
+>     if (oldPrototype != null) {
+373a375,376
+>       oldPrototype.setOwnerFunction(null);
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/54
+VersionID : 54
+results : 
+working : True
+TypedScopeCreator.java : 1413c1413,1419
+<           if (!qVar.isTypeInferred()) {
+---
+>           ObjectType qVarType = ObjectType.cast(qVar.getType());
+>           if (qVarType != null &&
+>               rhsValue != null &&
+>               rhsValue.getType() == Token.OBJECTLIT) {
+>             typeRegistry.resetImplicitPrototype(
+>                 rhsValue.getJSType(), qVarType.getImplicitPrototype());
+>           } else if (!qVar.isTypeInferred()) {
+
+FunctionType.java : 341d340
+<         baseType.isUnknownType() ||
+366c365,366
+<     boolean replacedPrototype = prototype != null;
+---
+>     PrototypeObjectType oldPrototype = this.prototype;
+>     boolean replacedPrototype = oldPrototype != null;
+371a372
+>     if (oldPrototype != null) {
+373a375,376
+>       oldPrototype.setOwnerFunction(null);
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/55
+VersionID : 55
+results : 
+working : True
+FunctionRewriter.java : 117c117,118
+<     return NodeUtil.isFunctionExpression(n);
+---
+>     return NodeUtil.isFunctionExpression(n)
+>         && !NodeUtil.isGetOrSetKey(n.getParent());
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/56
+VersionID : 56
+results : 
+working : True
+SourceFile.java : 241a242
+>       if (pos >= js.length()) {
+242a244,246
+>       } else {
+>         return js.substring(pos, js.length());
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/57
+VersionID : 57
+results : 
+working : True
+ClosureCodingConvention.java : 197c197
+<           if (target != null) {
+---
+>           if (target != null && target.getType() == Token.STRING) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/58
+VersionID : 58
+results : 
+working : True
+LiveVariablesAnalysis.java : 205a206
+>           if (NodeUtil.isName(lhs)) {
+207a209,211
+>           } else {
+>             computeGenKill(lhs, gen, kill, conditional);
+>           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/59
+VersionID : 59
+results : 
+working : True
+Compiler.java : 255c255,256
+<     if (options.checkGlobalThisLevel.isOn()) {
+---
+>     if (options.checkGlobalThisLevel.isOn() &&
+>         !options.disables(DiagnosticGroups.GLOBAL_THIS)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/6
+VersionID : 6
+results : 
+working : True
+TypeValidator.java : 366,368d365
+<       if ((leftType.isConstructor() || leftType.isEnumType()) && (rightType.isConstructor() || rightType.isEnumType())) {
+<         registerMismatch(rightType, leftType, null);
+<       } else {
+385d381
+<       }
+405,407d400
+<       if ((leftType.isConstructor() || leftType.isEnumType()) && (rightType.isConstructor() || rightType.isEnumType())) {
+<         registerMismatch(rightType, leftType, null);
+<       } else {
+409d401
+<       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/60
+VersionID : 60
+results : 
+working : True
+NodeUtil.java : 107a108,109
+>       case Token.VOID:
+>         return TernaryValue.FALSE;
+135a138
+>         if (!mayHaveSideEffects(n.getFirstChild())) {
+136a140,141
+>         }
+>         break;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/61
+VersionID : 61
+results : 
+working : True
+NodeUtil.java : 957a958,963
+>       if (nameNode.getFirstChild().getType() == Token.NAME) {
+>         String namespaceName = nameNode.getFirstChild().getString();
+>         if (namespaceName.equals("Math")) {
+>           return false;
+>         }
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/62
+VersionID : 62
+results : 
+working : True
+LightweightMessageFormatter.java : 98c98
+<           && 0 <= charno && charno < sourceExcerpt.length()) {
+---
+>           && 0 <= charno && charno <= sourceExcerpt.length()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/63
+VersionID : 63
+results : 
+working : True
+LightweightMessageFormatter.java : 98c98
+<           && 0 <= charno && charno < sourceExcerpt.length()) {
+---
+>           && 0 <= charno && charno <= sourceExcerpt.length()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/64
+VersionID : 64
+results : 
+working : True
+Compiler.java : 1432c1432
+<         String code = toSource(root, sourceMap);
+---
+>         String code = toSource(root, sourceMap, inputSeqNum == 0);
+1461c1461
+<     return toSource(n, null);
+---
+>     return toSource(n, null, true);
+1467c1467
+<   private String toSource(Node n, SourceMap sourceMap) {
+---
+>   private String toSource(Node n, SourceMap sourceMap, boolean firstOutput) {
+1473c1473
+<     builder.setTagAsStrict(
+---
+>     builder.setTagAsStrict(firstOutput &&
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/65
+VersionID : 65
+results : 
+working : True
+CodeGenerator.java : 1015c1015
+<         case '\0': sb.append("\\0"); break;
+---
+>         case '\0': sb.append("\\000"); break;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/66
+VersionID : 66
+results : 
+working : True
+TypeCheck.java : 515a516
+>         } else {
+516a518
+>           typeable = false;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/67
+VersionID : 67
+results : 
+working : True
+AnalyzePrototypeProperties.java : 318c318
+<           ) {
+---
+>           && assign.getParent().getType() == Token.EXPR_RESULT) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/68
+VersionID : 68
+results : 
+working : True
+JsDocInfoParser.java : 867a868
+>                   }
+870d870
+<                   }
+1708a1709
+>     restoreLookAhead(token);
+1760a1762
+>       restoreLookAhead(token);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/69
+VersionID : 69
+results : 
+working : True
+TypeCheck.java : 1579a1580,1586
+>       if (functionType.isOrdinaryFunction() &&
+>           !functionType.getTypeOfThis().isUnknownType() &&
+>           !functionType.getTypeOfThis().isNativeObjectType() &&
+>           !(child.getType() == Token.GETELEM ||
+>             child.getType() == Token.GETPROP)) {
+>         report(t, n, EXPECTED_THIS_TYPE, functionType.toString());
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/7
+VersionID : 7
+results : 
+working : True
+ChainableReverseAbstractInterpreter.java : 613c613
+<         return resultEqualsValue && ctorType.isSubtype(type) ? ctorType : null;
+---
+>         if (resultEqualsValue) {
+614a615,616
+>           return ctorType.getGreatestSubtype(type);
+>         } else {
+615a618,619
+>           return type.isSubtype(ctorType) ? null : type;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/70
+VersionID : 70
+results : 
+working : True
+TypedScopeCreator.java : 1745c1745
+<                   jsDocParameter.getJSType(), true);
+---
+>                   jsDocParameter.getJSType(), false);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/71
+VersionID : 71
+results : 
+working : True
+CheckAccessControls.java : 416c416
+<       boolean isOverride = t.inGlobalScope() &&
+---
+>       boolean isOverride = parent.getJSDocInfo() != null &&
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/72
+VersionID : 72
+results : 
+working : True
+FunctionToBlockMutator.java : 151a152,153
+>     new RenameLabels(compiler, new LabelNameSupplier(idSupplier), false)
+>         .process(null, fnNode);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/72
+VersionID : 72
+results : 
+working : True
+FunctionToBlockMutator.java : 151a152,153
+>     new RenameLabels(compiler, new LabelNameSupplier(idSupplier), false)
+>         .process(null, fnNode);
+
+RenameLabels.java : 215c215
+<       if (li.referenced) {
+---
+>       if (li.referenced || !removeUnused) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/73
+VersionID : 73
+results : 
+working : True
+CodeGenerator.java : 1045c1045
+<             if (c > 0x1f && c <= 0x7f) {
+---
+>             if (c > 0x1f && c < 0x7f) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/74
+VersionID : 74
+results : 
+working : True
+PeepholeFoldConstants.java : 907,908c907,908
+<     int lhType = left.getType();
+<     int rhType = right.getType();
+---
+>     int lhType = getNormalizedNodeType(left);
+>     int rhType = getNormalizedNodeType(right);
+1073a1074,1086
+>   private int getNormalizedNodeType(Node n) {
+>     int type = n.getType();
+>     if (type == Token.NOT) {
+>       TernaryValue value = NodeUtil.getPureBooleanValue(n);
+>       switch (value) {
+>         case TRUE:
+>           return Token.TRUE;
+>         case FALSE:
+>           return Token.FALSE;
+>       }
+>     }
+>     return type;
+>   }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/75
+VersionID : 75
+results : 
+working : True
+NodeUtil.java : 312a313
+>     if (rawJsString.contains("\u000b")) {
+313a315,316
+>       return null;
+>     }
+375c378
+<         return TernaryValue.TRUE;
+---
+>         return TernaryValue.UNKNOWN;  // IE says "no", EcmaScript says "yes"
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/76
+VersionID : 76
+results : 
+working : True
+DeadAssignmentsElimination.java : 299a300,307
+>           if (n.getNext() != null) {
+>             state = isVariableReadBeforeKill(
+>                 n.getNext(), variable);
+>             if (state == VariableLiveness.KILL) {
+>               state = VariableLiveness.MAYBE_LIVE;
+>             }
+>           }
+>           break;
+304a313,317
+>           if (n.getNext() != null && n.getNext().getNext() != null) {
+>             state = checkHookBranchReadBeforeKill(
+>                 n.getNext(), n.getNext().getNext(), variable);
+>           }
+>           break;
+309d321
+<             if (!ControlFlowGraph.isEnteringNewCfgNode(sibling)) {
+310a323,327
+>             if (state != VariableLiveness.MAYBE_LIVE) {
+>               break;
+>             }
+>           }
+>       }
+317,319d333
+<             }
+<           }
+<       }
+339a354,356
+>     if (ControlFlowGraph.isEnteringNewCfgNode(n)) { // Not a FUNCTION
+>       return VariableLiveness.MAYBE_LIVE;
+>     }
+361a379,382
+>         VariableLiveness v1 = isVariableReadBeforeKill(
+>           n.getFirstChild(), variable);
+>         VariableLiveness v2 = isVariableReadBeforeKill(
+>           n.getLastChild(), variable);
+363a385,391
+>         if (v1 != VariableLiveness.MAYBE_LIVE) {
+>           return v1;
+>         } else if (v2 == VariableLiveness.READ) {
+>           return VariableLiveness.READ;
+>         } else {
+>           return VariableLiveness.MAYBE_LIVE;
+>         }
+364a393,397
+>         VariableLiveness first = isVariableReadBeforeKill(
+>             n.getFirstChild(), variable);
+>         if (first != VariableLiveness.MAYBE_LIVE) {
+>           return first;
+>         }
+372d404
+<           if (!ControlFlowGraph.isEnteringNewCfgNode(child)) { // Not a FUNCTION
+378d409
+<       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/77
+VersionID : 77
+results : 
+working : True
+CodeGenerator.java : 965a966
+>         case '\0': sb.append("\\0"); break;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/78
+VersionID : 78
+results : 
+working : True
+PeepholeFoldConstants.java : 711d710
+<           error(DiagnosticType.error("JSC_DIVIDE_BY_0_ERROR", "Divide by 0"), right);
+718d716
+<           error(DiagnosticType.error("JSC_DIVIDE_BY_0_ERROR", "Divide by 0"), right);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/79
+VersionID : 79
+results : 
+working : True
+Normalize.java : 122c122
+<         .traverse(root);
+---
+>         .traverseRoots(externs, root);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/79
+VersionID : 79
+results : 
+working : True
+VarCheck.java : 220a221
+>     compiler.reportCodeChange();
+
+Normalize.java : 122c122
+<         .traverse(root);
+---
+>         .traverseRoots(externs, root);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/8
+VersionID : 8
+results : 
+working : True
+CollapseVariableDeclarations.java : 203a204
+>           && !isNamedParameter(var)
+207a209,211
+>   private boolean isNamedParameter(Var v) {
+>     return v.getParentNode().isParamList();
+>   }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/80
+VersionID : 80
+results : 
+working : True
+NodeUtil.java : 1261a1262
+>       case Token.DELPROP:
+2909a2911
+>       case Token.DELPROP:
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/81
+VersionID : 81
+results : 
+working : True
+IRFactory.java : 516a517,523
+>         int functionType = functionNode.getFunctionType();
+>         if (functionType != FunctionNode.FUNCTION_EXPRESSION) {
+>           errorReporter.error(
+>             "unnamed function statement",
+>             sourceName,
+>             functionNode.getLineno(), "", 0);
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/82
+VersionID : 82
+results : 
+working : True
+JSType.java : 163c163,165
+<     return isNoType() || isNoObjectType() || isNoResolvedType();
+---
+>     return isNoType() || isNoObjectType() || isNoResolvedType() ||
+>         (registry.getNativeFunctionType(
+>              JSTypeNative.LEAST_FUNCTION_TYPE) == this);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/83
+VersionID : 83
+results : 
+working : True
+CommandLineRunner.java : 334c334,337
+<         String param = params.getParameter(0);
+---
+>         String param = null;
+>         try {
+>           param = params.getParameter(0);
+>         } catch (CmdLineException e) {}
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/84
+VersionID : 84
+results : 
+working : True
+IRFactory.java : 340a341,347
+>       Node target = assign.getFirstChild();
+>       if (!validAssignmentTarget(target)) {
+>         errorReporter.error(
+>           "invalid assignment target",
+>           sourceName,
+>           target.getLineno(), "", 0);
+>       }
+796a804,814
+>         if (type == Token.INC || type == Token.DEC) {
+>           if (!validAssignmentTarget(operand)) {
+>             String msg = (type == Token.INC)
+>                 ? "invalid increment target"
+>                 : "invalid decrement target";
+>             errorReporter.error(
+>               msg,
+>               sourceName,
+>               operand.getLineno(), "", 0);
+>           }
+>         }
+805a824,832
+>     private boolean validAssignmentTarget(Node target) {
+>       switch (target.getType()) {
+>         case Token.NAME:
+>         case Token.GETPROP:
+>         case Token.GETELEM:
+>           return true;
+>       }
+>       return false;
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/85
+VersionID : 85
+results : 
+working : True
+UnreachableCodeElimination.java : 153,158d152
+<     if (n.getParent() == null) {
+<       List<DiGraphEdge<Node,Branch>> outEdges = gNode.getOutEdges();
+<       if (outEdges.size() == 1) {
+<         return tryRemoveUnconditionalBranching(outEdges.get(0).getDestination().getValue());
+<       }
+<     }
+160,166d153
+<       case Token.BLOCK:
+<         if (n.hasChildren()) {
+<           Node first = n.getFirstChild();
+<           return tryRemoveUnconditionalBranching(first);
+<         } else {
+<           return tryRemoveUnconditionalBranching(ControlFlowAnalysis.computeFollowNode(n));
+<         }
+183c170
+<           Node fallThrough = tryRemoveUnconditionalBranching(computeFollowing(n));
+---
+>           Node fallThrough = computeFollowing(n);
+195a183,189
+>     while (next != null && next.getType() == Token.BLOCK) {
+>       if (next.hasChildren()) {
+>         next = next.getFirstChild();
+>       } else {
+>         next = computeFollowing(next);
+>       }
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/86
+VersionID : 86
+results : 
+working : True
+NodeUtil.java : 2465c2465
+<         return true;
+---
+>         return false;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/87
+VersionID : 87
+results : 
+working : True
+PeepholeSubstituteAlternateSyntax.java : 522a523
+>         if (maybeExpr.getType() == Token.EXPR_RESULT) {
+528a530,531
+>           if (maybeExpr.getFirstChild().getType() == Token.CALL) {
+>             Node calledFn = maybeExpr.getFirstChild().getFirstChild();
+531a535,541
+>             if (calledFn.getType() == Token.GETELEM) {
+>               return false;
+>             } else if (calledFn.getType() == Token.GETPROP &&
+>                        calledFn.getLastChild().getString().startsWith("on")) {
+>               return false;
+>             }
+>           }
+533c543,545
+<           return NodeUtil.isExpressionNode(maybeExpr);
+---
+>           return true;
+>         }
+>         return false;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/88
+VersionID : 88
+results : 
+working : True
+DeadAssignmentsElimination.java : 326a327
+>         Preconditions.checkState(n.getParent().getType() == Token.ASSIGN);
+329a331,335
+>         Node rhs = n.getNext();
+>         VariableLiveness state = isVariableReadBeforeKill(rhs, variable);
+>         if (state == VariableLiveness.READ) {
+>           return state;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/89
+VersionID : 89
+results : 
+working : True
+CollapseProperties.java : 483a484,486
+>     if (rvalue != null && rvalue.getType() == Token.FUNCTION) {
+>       checkForHosedThisReferences(rvalue, refName.docInfo, refName);
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/89
+VersionID : 89
+results : 
+working : True
+GlobalNamespace.java : 920c920
+<       if (type != Type.FUNCTION && aliasingGets > 0) {
+---
+>       if (aliasingGets > 0) {
+
+CollapseProperties.java : 483a484,486
+>     if (rvalue != null && rvalue.getType() == Token.FUNCTION) {
+>       checkForHosedThisReferences(rvalue, refName.docInfo, refName);
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/9
+VersionID : 9
+results : 
+working : True
+ProcessCommonJSModules.java : 118a119
+>     filename = filename.replace("\\", "/");
+183c184
+<       String moduleName = guessCJSModuleName(normalizeSourceName(script.getSourceFileName()));
+---
+>       String moduleName = guessCJSModuleName(script.getSourceFileName());
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/90
+VersionID : 90
+results : 
+working : True
+FunctionType.java : 879a880,882
+>     if (maybeTypeOfThis != null) {
+>       maybeTypeOfThis = maybeTypeOfThis.restrictByNotNullOrUndefined();
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/90
+VersionID : 90
+results : 
+working : True
+FunctionTypeBuilder.java : 184c184
+<       if (!type.isSubtype(
+---
+>       if (!type.restrictByNotNullOrUndefined().isSubtype(
+
+FunctionType.java : 879a880,882
+>     if (maybeTypeOfThis != null) {
+>       maybeTypeOfThis = maybeTypeOfThis.restrictByNotNullOrUndefined();
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/91
+VersionID : 91
+results : 
+working : True
+CheckGlobalThis.java : 114a115,123
+>       Node gramps = parent.getParent();
+>       if (NodeUtil.isObjectLitKey(parent, gramps)) {
+>         JSDocInfo maybeLends = gramps.getJSDocInfo();
+>         if (maybeLends != null &&
+>             maybeLends.getLendsName() != null &&
+>             maybeLends.getLendsName().endsWith(".prototype")) {
+>           return false;
+>         }
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/92
+VersionID : 92
+results : 
+working : True
+ProcessClosurePrimitives.java : 789c789
+<           int indexOfDot = namespace.indexOf('.');
+---
+>           int indexOfDot = namespace.lastIndexOf('.');
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/93
+VersionID : 93
+results : 
+working : True
+ProcessClosurePrimitives.java : 789c789
+<           int indexOfDot = namespace.indexOf('.');
+---
+>           int indexOfDot = namespace.lastIndexOf('.');
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/94
+VersionID : 94
+results : 
+working : True
+NodeUtil.java : 328a329
+>       case Token.ADD:
+332a334,350
+>       case Token.DIV:
+>       case Token.EQ:
+>       case Token.GE:
+>       case Token.GT:
+>       case Token.LE:
+>       case Token.LSH:
+>       case Token.LT:
+>       case Token.MOD:
+>       case Token.MUL:
+>       case Token.NE:
+>       case Token.RSH:
+>       case Token.SHEQ:
+>       case Token.SHNE:
+>       case Token.SUB:
+>       case Token.URSH:
+>         return isValidDefineValue(val.getFirstChild(), defines)
+>             && isValidDefineValue(val.getLastChild(), defines);
+336a355
+>       case Token.POS:
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/95
+VersionID : 95
+results : 
+working : True
+TypedScopeCreator.java : 898a899,901
+>       if (n.getType() == Token.GETPROP && !scope.isGlobal() &&
+>           isQnameRootedInGlobalScope(n)) {
+>         Scope globalScope = scope.getGlobalScope();
+901a905,908
+>         if (!globalScope.isDeclared(variableName, false)) {
+>           scopeToDeclareIn = scope.getGlobalScope();
+>         }
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/96
+VersionID : 96
+results : 
+working : True
+TypeCheck.java : 1409c1409,1410
+<            parameters.hasNext()) {
+---
+>            (parameters.hasNext() ||
+>             parameter != null && parameter.isVarArgs())) {
+1411a1413
+>       if (parameters.hasNext()) {
+1412a1415
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/97
+VersionID : 97
+results : 
+working : True
+PeepholeFoldConstants.java : 698c698,699
+<           result = lvalInt >>> rvalInt;
+---
+>           long lvalLong = lvalInt & 0xffffffffL;
+>           result = lvalLong >>> rvalInt;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/98
+VersionID : 98
+results : 
+working : True
+ReferenceCollectingCallback.java : 360a361,368
+>       for (BasicBlock block = ref.getBasicBlock();
+>            block != null; block = block.getParent()) {
+>         if (block.isFunction) {
+>           break;
+>         } else if (block.isLoop) {
+>           return false;
+>         }
+>       }
+544a553
+>     private final boolean isFunction;
+548a558
+>     private final boolean isLoop;
+560a571
+>       this.isFunction = root.getType() == Token.FUNCTION;
+561a573,580
+>       if (root.getParent() != null) {
+>         int pType = root.getParent().getType();
+>         this.isLoop = pType == Token.DO ||
+>             pType == Token.WHILE ||
+>             pType == Token.FOR;
+>       } else {
+>         this.isLoop = false;
+>       }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Closure/99
+VersionID : 99
+results : 
+working : True
+CheckGlobalThis.java : 91a92
+>            jsDoc.isInterface() ||
+124a126
+>         if (NodeUtil.isGet(lhs)) {
+129c131,133
+<           if (lhs.getQualifiedName() != null && lhs.getQualifiedName().contains(".prototype.")) {
+---
+>           Node llhs = lhs.getFirstChild();
+>           if (llhs.getType() == Token.GETPROP &&
+>               llhs.getLastChild().getString().equals("prototype")) {
+131a136
+>         }
+

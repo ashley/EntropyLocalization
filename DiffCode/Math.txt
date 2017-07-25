@@ -1,0 +1,1721 @@
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/1
+VersionID : 1
+results : 
+working : True
+BigFraction.java : 305a306,308
+>                 if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {
+>                     break;
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/1
+VersionID : 1
+results : 
+working : True
+Fraction.java : 214a215,217
+>                 if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {
+>                     break;
+>                 }
+
+BigFraction.java : 305a306,308
+>                 if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {
+>                     break;
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/10
+VersionID : 10
+results : 
+working : True
+DSCompiler.java : 1418a1419
+>         result[resultOffset] = FastMath.atan2(y[yOffset], x[xOffset]);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/11
+VersionID : 11
+results : 
+working : True
+MultivariateNormalDistribution.java : 183c183
+<         return FastMath.pow(2 * FastMath.PI, -dim / 2) *
+---
+>         return FastMath.pow(2 * FastMath.PI, -0.5 * dim) *
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/12
+VersionID : 12
+results : 
+working : True
+BitsStreamGenerator.java : 18a19
+> import java.io.Serializable;
+29c30,31
+<     implements RandomGenerator {
+---
+>     implements RandomGenerator,
+>                Serializable {
+30a33
+>     private static final long serialVersionUID = 20130104L;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/13
+VersionID : 13
+results : 
+working : True
+AbstractLeastSquaresOptimizer.java : 561a562,569
+>         if (m instanceof DiagonalMatrix) {
+>             final int dim = m.getRowDimension();
+>             final RealMatrix sqrtM = new DiagonalMatrix(dim);
+>             for (int i = 0; i < dim; i++) {
+>                sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));
+>             }
+>             return sqrtM;
+>         } else {
+563a572
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/14
+VersionID : 14
+results : 
+working : True
+AbstractLeastSquaresOptimizer.java : 266a267,274
+>         if (m instanceof DiagonalMatrix) {
+>             final int dim = m.getRowDimension();
+>             final RealMatrix sqrtM = new DiagonalMatrix(dim);
+>             for (int i = 0; i < dim; i++) {
+>                 sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));
+>             }
+>             return sqrtM;
+>         } else {
+268a277
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/14
+VersionID : 14
+results : 
+working : True
+AbstractLeastSquaresOptimizer.java : 266a267,274
+>         if (m instanceof DiagonalMatrix) {
+>             final int dim = m.getRowDimension();
+>             final RealMatrix sqrtM = new DiagonalMatrix(dim);
+>             for (int i = 0; i < dim; i++) {
+>                 sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));
+>             }
+>             return sqrtM;
+>         } else {
+268a277
+>         }
+
+Weight.java : 43,46c43
+<         weightMatrix = org.apache.commons.math3.linear.MatrixUtils.createRealMatrix(dim, dim);
+<         for (int i = 0; i < dim; i++) {
+<             weightMatrix.setEntry(i, i, weight[i]);
+<         }
+---
+>         weightMatrix = new DiagonalMatrix(weight);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/15
+VersionID : 15
+results : 
+working : True
+FastMath.java : 312a313
+>     private static final double TWO_POWER_53 = 2 * TWO_POWER_52;
+1541c1542
+<             if (y >= TWO_POWER_52 || y <= -TWO_POWER_52) {
+---
+>             if (y >= TWO_POWER_53 || y <= -TWO_POWER_53) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/16
+VersionID : 16
+results : 
+working : True
+FastMath.java : 81a82
+>     private static final double LOG_MAX_VALUE = StrictMath.log(Double.MAX_VALUE);
+393a395
+>           if (x >= LOG_MAX_VALUE) {
+394a397,399
+>               final double t = exp(0.5 * x);
+>               return (0.5 * t) * t;
+>           } else {
+397c402,403
+<       if (x < -20) {
+---
+>       } else if (x < -20) {
+>           if (x <= -LOG_MAX_VALUE) {
+398a405,407
+>               final double t = exp(-0.5 * x);
+>               return (0.5 * t) * t;
+>           } else {
+399a409
+>           }
+454a465
+>           if (x >= LOG_MAX_VALUE) {
+455a467,469
+>               final double t = exp(0.5 * x);
+>               return (0.5 * t) * t;
+>           } else {
+458c472,473
+<       if (x < -20) {
+---
+>       } else if (x < -20) {
+>           if (x <= -LOG_MAX_VALUE) {
+459a475,477
+>               final double t = exp(-0.5 * x);
+>               return (-0.5 * t) * t;
+>           } else {
+460a479
+>           }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/17
+VersionID : 17
+results : 
+working : True
+Dfp.java : 1602a1603
+>         if (x >= 0 && x < RADIX) {
+1603a1605,1607
+>         } else {
+>             return multiply(newInstance(x));
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/18
+VersionID : 18
+results : 
+working : True
+CMAESOptimizer.java : 932c932
+<                 res[i] = (x[i] - boundaries[0][i]) / diff;
+---
+>                 res[i] = x[i] / diff;
+958c958
+<                 res[i] = diff * x[i] + boundaries[0][i];
+---
+>                 res[i] = diff * x[i];
+989a990,991
+>             final double[] bLoEnc = encode(boundaries[0]);
+>             final double[] bHiEnc = encode(boundaries[1]);
+992c994
+<                 if (x[i] < 0) {
+---
+>                 if (x[i] < bLoEnc[i]) {
+995c997
+<                 if (x[i] > 1.0) {
+---
+>                 if (x[i] > bHiEnc[i]) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/19
+VersionID : 19
+results : 
+working : True
+CMAESOptimizer.java : 539a540,552
+>                 for (int i = 0; i < lB.length; i++) {
+>                     if (Double.isInfinite(boundaries[1][i] - boundaries[0][i])) {
+>                         final double max = Double.MAX_VALUE + boundaries[0][i];
+>                         final NumberIsTooLargeException e
+>                             = new NumberIsTooLargeException(boundaries[1][i],
+>                                                             max,
+>                                                             true);
+>                         e.getContext().addMessage(LocalizedFormats.OVERFLOW);
+>                         e.getContext().addMessage(LocalizedFormats.INDEX, i);
+> 
+>                         throw e;
+>                     }
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/2
+VersionID : 2
+results : 
+working : True
+HypergeometricDistribution.java : 268c268
+<         return (double) (getSampleSize() * getNumberOfSuccesses()) / (double) getPopulationSize();
+---
+>         return getSampleSize() * (getNumberOfSuccesses() / (double) getPopulationSize());
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/20
+VersionID : 20
+results : 
+working : True
+CMAESOptimizer.java : 921c921,922
+<             return
+---
+>             return boundaries != null && isRepairMode ?
+>                 decode(repair(x)) :
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/21
+VersionID : 21
+results : 
+working : True
+RectangularCholeskyDecomposition.java : 69d68
+<         int[] swap  = new int[order];
+79c78
+<             swap[r] = r;
+---
+>             int swapR = r;
+82,84c81,83
+<                 int isi = index[swap[i]];
+<                 if (c[ii][ii] > c[isi][isi]) {
+<                     swap[r] = i;
+---
+>                 int isr = index[swapR];
+>                 if (c[ii][ii] > c[isr][isr]) {
+>                     swapR = i;
+90,93c89,95
+<             if (swap[r] != r) {
+<                 int tmp = index[r];
+<                 index[r] = index[swap[r]];
+<                 index[swap[r]] = tmp;
+---
+>             if (swapR != r) {
+>                 final int tmpIndex    = index[r];
+>                 index[r]              = index[swapR];
+>                 index[swapR]          = tmpIndex;
+>                 final double[] tmpRow = b[r];
+>                 b[r]                  = b[swapR];
+>                 b[swapR]              = tmpRow;
+123a126
+>                 final double inverse2 = 1 / c[ir][ir];
+128c131
+<                     c[ii][ii] -= e * e;
+---
+>                     c[ii][ii] -= c[ii][ir] * c[ii][ir] * inverse2;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/22
+VersionID : 22
+results : 
+working : True
+FDistribution.java : 275c275
+<         return true;
+---
+>         return false;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/22
+VersionID : 22
+results : 
+working : True
+UniformRealDistribution.java : 184c184
+<         return false;
+---
+>         return true;
+
+FDistribution.java : 275c275
+<         return true;
+---
+>         return false;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/23
+VersionID : 23
+results : 
+working : True
+BrentOptimizer.java : 150a151
+>         UnivariatePointValuePair best = current;
+233a235,239
+>                 best = best(best,
+>                             best(current,
+>                                  previous,
+>                                  isMinim),
+>                             isMinim);
+237c243
+<                         return best(current, previous, isMinim);
+---
+>                         return best;
+274c280
+<                 return
+---
+>                 return best(best,
+276a283
+>                                  isMinim),
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/24
+VersionID : 24
+results : 
+working : True
+BrentOptimizer.java : 230c230
+<                         return current;
+---
+>                         return best(current, previous, isMinim);
+267c267
+<                 return current;
+---
+>                 return best(current, previous, isMinim);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/25
+VersionID : 25
+results : 
+working : True
+HarmonicFitter.java : 322a323
+>                 if (c2 == 0) {
+324a326,327
+>                     throw new MathIllegalStateException(LocalizedFormats.ZERO_DENOMINATOR);
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/26
+VersionID : 26
+results : 
+working : True
+Fraction.java : 181c181
+<         if (a0 > overflow) {
+---
+>         if (FastMath.abs(a0) > overflow) {
+209c209
+<             if ((p2 > overflow) || (q2 > overflow)) {
+---
+>             if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/27
+VersionID : 27
+results : 
+working : True
+Fraction.java : 597c597
+<         return multiply(100).doubleValue();
+---
+>         return 100 * doubleValue();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/28
+VersionID : 28
+results : 
+working : True
+SimplexSolver.java : 118a119
+>             if (tableau.getNumArtificialVariables() > 0) {
+127a129
+>             }
+137a140
+>             if (getIterations() < getMaxIterations() / 2) {
+151a155
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/29
+VersionID : 29
+results : 
+working : True
+OpenMapRealVector.java : 349,352c349,351
+<         Iterator iter = entries.iterator();
+<         while (iter.hasNext()) {
+<             iter.advance();
+<             res.setEntry(iter.key(), iter.value() / v.getEntry(iter.key()));
+---
+>         final int n = getDimension();
+>         for (int i = 0; i < n; i++) {
+>             res.setEntry(i, this.getEntry(i) / v.getEntry(i));
+373a373,384
+>         if (v.isNaN() || v.isInfinite()) {
+>             final int n = getDimension();
+>             for (int i = 0; i < n; i++) {
+>                 final double y = v.getEntry(i);
+>                 if (Double.isNaN(y)) {
+>                     res.setEntry(i, Double.NaN);
+>                 } else if (Double.isInfinite(y)) {
+>                     final double x = this.getEntry(i);
+>                     res.setEntry(i, x * y);
+>                 }
+>             }
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/3
+VersionID : 3
+results : 
+working : True
+MathArrays.java : 820a821
+>         if (len == 1) {
+821a823,824
+>             return a[0] * b[0];
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/30
+VersionID : 30
+results : 
+working : True
+MannWhitneyUTest.java : 173c173
+<         final int n1n2prod = n1 * n2;
+---
+>         final double n1n2prod = n1 * n2;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/31
+VersionID : 31
+results : 
+working : True
+ContinuedFraction.java : 134,135d133
+<         double p0 = 1.0;
+<         double q1 = 1.0;
+143,166c141,147
+<             double cN = a * hPrev + b * p0;
+<             double q2 = a * q1 + b * dPrev;
+<             if (Double.isInfinite(cN) || Double.isInfinite(q2)) {
+<                 double scaleFactor = 1d;
+<                 double lastScaleFactor = 1d;
+<                 final int maxPower = 5;
+<                 final double scale = FastMath.max(a,b);
+<                 if (scale <= 0) {  // Can't scale
+<                     throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_INFINITY_DIVERGENCE, x);
+<                 }
+<                 for (int i = 0; i < maxPower; i++) {
+<                     lastScaleFactor = scaleFactor;
+<                     scaleFactor *= scale;
+<                     if (a != 0.0 && a > b) {
+<                         cN = hPrev / lastScaleFactor + (b / scaleFactor * p0);
+<                         q2 = q1 / lastScaleFactor + (b / scaleFactor * dPrev);
+<                     } else if (b != 0) {
+<                         cN = (a / scaleFactor * hPrev) + p0 / lastScaleFactor;
+<                         q2 = (a / scaleFactor * q1) + dPrev / lastScaleFactor;
+<                     }
+<                     if (!(Double.isInfinite(cN) || Double.isInfinite(q2))) {
+<                         break;
+<                     }
+<                 }
+---
+>             double dN = a + b * dPrev;
+>             if (Precision.equals(dN, 0.0, small)) {
+>                 dN = small;
+>             }
+>             double cN = a + b / cPrev;
+>             if (Precision.equals(cN, 0.0, small)) {
+>                 cN = small;
+169,170c150,152
+<             final double deltaN = cN / q2 / cPrev;
+<             hN = cPrev * deltaN;
+---
+>             dN = 1 / dN;
+>             final double deltaN = cN * dN;
+>             hN = hPrev * deltaN;
+185,189c167,169
+<             dPrev = q1;
+<             cPrev = cN / q2;
+<             p0 = hPrev;
+<             hPrev = cN;
+<             q1 = q2;
+---
+>             dPrev = dN;
+>             cPrev = cN;
+>             hPrev = hN;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/32
+VersionID : 32
+results : 
+working : True
+PolygonsSet.java : 136c136
+<             if ((Boolean) tree.getAttribute()) {
+---
+>             if (tree.getCut() == null && (Boolean) tree.getAttribute()) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/33
+VersionID : 33
+results : 
+working : True
+SimplexTableau.java : 338c338
+<             if (Precision.compareTo(entry, 0d, maxUlps) > 0) {
+---
+>             if (Precision.compareTo(entry, 0d, epsilon) > 0) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/34
+VersionID : 34
+results : 
+working : True
+ListPopulation.java : 209c209
+<         return chromosomes.iterator();
+---
+>         return getChromosomes().iterator();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/35
+VersionID : 35
+results : 
+working : True
+ElitisticListPopulation.java : 51c51
+<         this.elitismRate = elitismRate;
+---
+>         setElitismRate(elitismRate);
+65c65
+<         this.elitismRate = elitismRate;
+---
+>         setElitismRate(elitismRate);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/36
+VersionID : 36
+results : 
+working : True
+BigFraction.java : 685a686
+>         if (Double.isNaN(result)) {
+687a689,693
+>             int shift = Math.max(numerator.bitLength(),
+>                                  denominator.bitLength()) - Double.MAX_EXPONENT;
+>             result = numerator.shiftRight(shift).doubleValue() /
+>                 denominator.shiftRight(shift).doubleValue();
+>         }
+732a739
+>         if (Double.isNaN(result)) {
+734a742,746
+>             int shift = Math.max(numerator.bitLength(),
+>                                  denominator.bitLength()) - Float.MAX_EXPONENT;
+>             result = numerator.shiftRight(shift).floatValue() /
+>                 denominator.shiftRight(shift).floatValue();
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/37
+VersionID : 37
+results : 
+working : True
+Complex.java : 1018c1018
+<         if (isNaN) {
+---
+>         if (isNaN || Double.isInfinite(real)) {
+1020a1021,1026
+>         if (imaginary > 20.0) {
+>             return createComplex(0.0, 1.0);
+>         }
+>         if (imaginary < -20.0) {
+>             return createComplex(0.0, -1.0);
+>         }
+1063c1069
+<         if (isNaN) {
+---
+>         if (isNaN || Double.isInfinite(imaginary)) {
+1065a1072,1077
+>         if (real > 20.0) {
+>             return createComplex(1.0, 0.0);
+>         }
+>         if (real < -20.0) {
+>             return createComplex(-1.0, 0.0);
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/38
+VersionID : 38
+results : 
+working : True
+BOBYQAOptimizer.java : 1660c1660
+<                     throw new PathIsExploredException(); // XXX
+---
+> //                     throw new PathIsExploredException(); // XXX
+1662,1663c1662,1663
+<                 final int iptMinus1 = ipt;
+<                 final int jptMinus1 = jpt;
+---
+>                 final int iptMinus1 = ipt - 1;
+>                 final int jptMinus1 = jpt - 1;
+1752c1752
+<                 throw new PathIsExploredException(); // XXX
+---
+> //                 throw new PathIsExploredException(); // XXX
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/39
+VersionID : 39
+results : 
+working : True
+EmbeddedRungeKuttaIntegrator.java : 249a250,258
+>         if (forward) {
+>             if (stepStart + stepSize >= t) {
+>                 stepSize = t - stepStart;
+>             }
+>         } else {
+>             if (stepStart + stepSize <= t) {
+>                 stepSize = t - stepStart;
+>             }
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/4
+VersionID : 4
+results : 
+working : True
+SubLine.java : 117a118,120
+>         if (v2D == null) {
+>             return null;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/40
+VersionID : 40
+results : 
+working : True
+BracketingNthOrderBrentSolver.java : 235c235,238
+<                 targetY = -REDUCTION_FACTOR * yB;
+---
+>                 final int p = agingA - MAXIMAL_AGING;
+>                 final double weightA = (1 << p) - 1;
+>                 final double weightB = p + 1;
+>                 targetY = (weightA * yA - weightB * REDUCTION_FACTOR * yB) / (weightA + weightB);
+238c241,244
+<                 targetY = -REDUCTION_FACTOR * yA;
+---
+>                 final int p = agingB - MAXIMAL_AGING;
+>                 final double weightA = p + 1;
+>                 final double weightB = (1 << p) - 1;
+>                 targetY = (weightB * yB - weightA * REDUCTION_FACTOR * yA) / (weightA + weightB);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/41
+VersionID : 41
+results : 
+working : True
+Variance.java : 520c520
+<                 for (int i = 0; i < weights.length; i++) {
+---
+>                 for (int i = begin; i < begin + length; i++) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/42
+VersionID : 42
+results : 
+working : True
+SimplexTableau.java : 409a410
+>           if (basicRow != null && basicRow == 0) {
+413c414,415
+<           if (basicRows.contains(basicRow)) {
+---
+>               coefficients[i] = 0;
+>           } else if (basicRows.contains(basicRow)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/43
+VersionID : 43
+results : 
+working : True
+SummaryStatistics.java : 158c158
+<         if (!(meanImpl instanceof Mean)) {
+---
+>         if (meanImpl != mean) {
+161c161
+<         if (!(varianceImpl instanceof Variance)) {
+---
+>         if (varianceImpl != variance) {
+164c164
+<         if (!(geoMeanImpl instanceof GeometricMean)) {
+---
+>         if (geoMeanImpl != geoMean) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/44
+VersionID : 44
+results : 
+working : True
+AbstractIntegrator.java : 280d279
+<             resetOccurred = false;
+333a333,335
+>                     for (final EventState remaining : occuringEvents) {
+>                         remaining.stepAccepted(eventT, eventY);
+>                     }
+342a345,347
+>                     for (final EventState remaining : occuringEvents) {
+>                         remaining.stepAccepted(eventT, eventY);
+>                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/45
+VersionID : 45
+results : 
+working : True
+OpenMapRealMatrix.java : 49a50,54
+>         long lRow = (long) rowDimension;
+>         long lCol = (long) columnDimension;
+>         if (lRow * lCol >= (long) Integer.MAX_VALUE) {
+>             throw new NumberIsTooLargeException(lRow * lCol, Integer.MAX_VALUE, false);
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/46
+VersionID : 46
+results : 
+working : True
+Complex.java : 260c260
+<             return isZero ? NaN : INF;
+---
+>             return NaN;
+297c297
+<             return isZero ? NaN : INF;
+---
+>             return NaN;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/47
+VersionID : 47
+results : 
+working : True
+Complex.java : 81a82
+>     private final transient boolean isZero;
+104a106
+>         isZero = real == 0 && imaginary == 0;
+256,257c258,259
+<         if (divisor.getReal() == 0.0 && divisor.getImaginary() == 0.0) {
+<             return NaN;
+---
+>         if (divisor.isZero) {
+>             return isZero ? NaN : INF;
+293c295
+<             return NaN;
+---
+>             return isZero ? NaN : INF;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/48
+VersionID : 48
+results : 
+working : True
+BaseSecantSolver.java : 188a189,191
+>                     if (x == x1) {
+>                         throw new ConvergenceException();
+>                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/49
+VersionID : 49
+results : 
+working : True
+OpenMapRealVector.java : 345c345
+<         Iterator iter = res.entries.iterator();
+---
+>         Iterator iter = entries.iterator();
+358c358
+<         Iterator iter = res.entries.iterator();
+---
+>         Iterator iter = entries.iterator();
+370c370
+<         Iterator iter = res.entries.iterator();
+---
+>         Iterator iter = entries.iterator();
+383c383
+<         Iterator iter = res.entries.iterator();
+---
+>         Iterator iter = entries.iterator();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/5
+VersionID : 5
+results : 
+working : True
+Complex.java : 305c305
+<             return NaN;
+---
+>             return INF;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/50
+VersionID : 50
+results : 
+working : True
+BaseSecantSolver.java : 187,190d186
+<                     if (x == x1) {
+<                         x0 = 0.5 * (x0 + x1 - FastMath.max(rtol * FastMath.abs(x1), atol));
+<                         f0 = computeObjectiveValue(x0);
+<                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/51
+VersionID : 51
+results : 
+working : True
+BaseSecantSolver.java : 184a185,188
+>                 case REGULA_FALSI:
+>                     if (x == x1) {
+>                         final double delta = FastMath.max(rtol * FastMath.abs(x1),
+>                                                           atol);
+186a191,194
+>                         x0 = 0.5 * (x0 + x1 - delta);
+>                         f0 = computeObjectiveValue(x0);
+>                     }
+>                     break;
+188a197
+>                     throw new MathInternalError();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/52
+VersionID : 52
+results : 
+working : True
+Rotation.java : 344c344,345
+<   if (c == 0) {
+---
+>   final double inPlaneThreshold = 0.001;
+>   if (c <= inPlaneThreshold * k.getNorm() * u3.getNorm()) {
+353c354
+<     if (c == 0) {
+---
+>     if (c <= inPlaneThreshold * k.getNorm() * u2Prime.getNorm()) {
+359c360
+<       if (c == 0) {
+---
+>       if (c <= 0) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/53
+VersionID : 53
+results : 
+working : True
+Complex.java : 152a153,155
+>         if (isNaN || rhs.isNaN) {
+>             return NaN;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/54
+VersionID : 54
+results : 
+working : True
+Dfp.java : 272a273,275
+>                 if ((bits & 0x8000000000000000L) != 0) {
+>                     sign = -1;
+>                 }
+2319c2322,2325
+<         if (lessThan(getZero())) {
+---
+>         int cmp0 = compare(this, getZero());
+>         if (cmp0 == 0) {
+>             return sign < 0 ? -0.0 : +0.0;
+>         } else if (cmp0 < 0) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/55
+VersionID : 55
+results : 
+working : True
+Vector3D.java : 458a459,463
+>       final double n1 = v1.getNormSq();
+>       final double n2 = v2.getNormSq();
+>       if ((n1 * n2) < MathUtils.SAFE_MIN) {
+>           return ZERO;
+>       }
+461a467,473
+>       final int deltaExp = (FastMath.getExponent(n1) - FastMath.getExponent(n2)) / 4;
+>       final double x1    = FastMath.scalb(v1.x, -deltaExp);
+>       final double y1    = FastMath.scalb(v1.y, -deltaExp);
+>       final double z1    = FastMath.scalb(v1.z, -deltaExp);
+>       final double x2    = FastMath.scalb(v2.x,  deltaExp);
+>       final double y2    = FastMath.scalb(v2.y,  deltaExp);
+>       final double z2    = FastMath.scalb(v2.z,  deltaExp);
+469a482,483
+>       final double ratio = (x1 * x2 + y1 * y2 + z1 * z2) / FastMath.scalb(n2, 2 * deltaExp);
+>       final double rho   = FastMath.rint(256 * ratio) / 256;
+470a485,487
+>       final double x3 = x1 - rho * x2;
+>       final double y3 = y1 - rho * y2;
+>       final double z3 = z1 - rho * z2;
+473c490
+<       return new Vector3D(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
+---
+>       return new Vector3D(y3 * z2 - z3 * y2, z3 * x2 - x3 * z2, x3 * y2 - y3 * x2);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/56
+VersionID : 56
+results : 
+working : True
+MultidimensionalCounter.java : 237,243c237
+<         int idx = 1;
+<         while (count < index) {
+<             count += idx;
+<             ++idx;
+<         }
+<         --idx;
+<         indices[last] = idx;
+---
+>         indices[last] = index - count;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/57
+VersionID : 57
+results : 
+working : True
+KMeansPlusPlusClusterer.java : 175c175
+<             int sum = 0;
+---
+>             double sum = 0;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/58
+VersionID : 58
+results : 
+working : True
+GaussianFitter.java : 121c121
+<         return fit(new Gaussian.Parametric(), guess);
+---
+>         return fit(guess);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/59
+VersionID : 59
+results : 
+working : True
+FastMath.java : 3482c3482
+<         return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : b);
+---
+>         return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : a);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/6
+VersionID : 6
+results : 
+working : True
+BaseOptimizer.java : 51c51
+<         iterations = new Incrementor(0, new MaxIterCallback());
+---
+>         iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/6
+VersionID : 6
+results : 
+working : True
+BaseOptimizer.java : 51c51
+<         iterations = new Incrementor(0, new MaxIterCallback());
+---
+>         iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());
+
+CMAESOptimizer.java : 387a388
+>             incrementIterationCount();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/6
+VersionID : 6
+results : 
+working : True
+BaseOptimizer.java : 51c51
+<         iterations = new Incrementor(0, new MaxIterCallback());
+---
+>         iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());
+
+GaussNewtonOptimizer.java : 106d105
+<         int iter = 0;
+108c107
+<             ++iter;
+---
+>             incrementIterationCount();
+160c159
+<                 converged = checker.converged(iter, previous, current);
+---
+>                 converged = checker.converged(getIterations(), previous, current);
+
+CMAESOptimizer.java : 387a388
+>             incrementIterationCount();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/6
+VersionID : 6
+results : 
+working : True
+BaseOptimizer.java : 51c51
+<         iterations = new Incrementor(0, new MaxIterCallback());
+---
+>         iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());
+
+LevenbergMarquardtOptimizer.java : 322d321
+<         int iter = 0;
+325c324,325
+<             ++iter;
+---
+>             incrementIterationCount();
+> 
+489c489
+<                         if (checker.converged(iter, previous, current)) {
+---
+>                         if (checker.converged(getIterations(), previous, current)) {
+
+GaussNewtonOptimizer.java : 106d105
+<         int iter = 0;
+108c107
+<             ++iter;
+---
+>             incrementIterationCount();
+160c159
+<                 converged = checker.converged(iter, previous, current);
+---
+>                 converged = checker.converged(getIterations(), previous, current);
+
+CMAESOptimizer.java : 387a388
+>             incrementIterationCount();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/6
+VersionID : 6
+results : 
+working : True
+BaseOptimizer.java : 51c51
+<         iterations = new Incrementor(0, new MaxIterCallback());
+---
+>         iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());
+
+LevenbergMarquardtOptimizer.java : 322d321
+<         int iter = 0;
+325c324,325
+<             ++iter;
+---
+>             incrementIterationCount();
+> 
+489c489
+<                         if (checker.converged(iter, previous, current)) {
+---
+>                         if (checker.converged(getIterations(), previous, current)) {
+
+GaussNewtonOptimizer.java : 106d105
+<         int iter = 0;
+108c107
+<             ++iter;
+---
+>             incrementIterationCount();
+160c159
+<                 converged = checker.converged(iter, previous, current);
+---
+>                 converged = checker.converged(getIterations(), previous, current);
+
+CMAESOptimizer.java : 387a388
+>             incrementIterationCount();
+
+NonLinearConjugateGradientOptimizer.java : 214d213
+<         int iter = 0;
+217c216
+<             ++iter;
+---
+>             incrementIterationCount();
+223c222
+<                 if (checker.converged(iter, previous, current)) {
+---
+>                 if (checker.converged(getIterations(), previous, current)) {
+277c276
+<             if (iter % n == 0 ||
+---
+>             if (getIterations() % n == 0 ||
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/6
+VersionID : 6
+results : 
+working : True
+LevenbergMarquardtOptimizer.java : 322d321
+<         int iter = 0;
+325c324,325
+<             ++iter;
+---
+>             incrementIterationCount();
+> 
+489c489
+<                         if (checker.converged(iter, previous, current)) {
+---
+>                         if (checker.converged(getIterations(), previous, current)) {
+
+PowellOptimizer.java : 191d190
+<         int iter = 0;
+193c192
+<             ++iter;
+---
+>             incrementIterationCount();
+227c226
+<                     stop = checker.converged(iter, previous, current);
+---
+>                     stop = checker.converged(getIterations(), previous, current);
+
+GaussNewtonOptimizer.java : 106d105
+<         int iter = 0;
+108c107
+<             ++iter;
+---
+>             incrementIterationCount();
+160c159
+<                 converged = checker.converged(iter, previous, current);
+---
+>                 converged = checker.converged(getIterations(), previous, current);
+
+CMAESOptimizer.java : 387a388
+>             incrementIterationCount();
+
+BaseOptimizer.java : 51c51
+<         iterations = new Incrementor(0, new MaxIterCallback());
+---
+>         iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());
+
+NonLinearConjugateGradientOptimizer.java : 214d213
+<         int iter = 0;
+217c216
+<             ++iter;
+---
+>             incrementIterationCount();
+223c222
+<                 if (checker.converged(iter, previous, current)) {
+---
+>                 if (checker.converged(getIterations(), previous, current)) {
+277c276
+<             if (iter % n == 0 ||
+---
+>             if (getIterations() % n == 0 ||
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/6
+VersionID : 6
+results : 
+working : True
+LevenbergMarquardtOptimizer.java : 322d321
+<         int iter = 0;
+325c324,325
+<             ++iter;
+---
+>             incrementIterationCount();
+> 
+489c489
+<                         if (checker.converged(iter, previous, current)) {
+---
+>                         if (checker.converged(getIterations(), previous, current)) {
+
+PowellOptimizer.java : 191d190
+<         int iter = 0;
+193c192
+<             ++iter;
+---
+>             incrementIterationCount();
+227c226
+<                     stop = checker.converged(iter, previous, current);
+---
+>                     stop = checker.converged(getIterations(), previous, current);
+
+GaussNewtonOptimizer.java : 106d105
+<         int iter = 0;
+108c107
+<             ++iter;
+---
+>             incrementIterationCount();
+160c159
+<                 converged = checker.converged(iter, previous, current);
+---
+>                 converged = checker.converged(getIterations(), previous, current);
+
+CMAESOptimizer.java : 387a388
+>             incrementIterationCount();
+
+BaseOptimizer.java : 51c51
+<         iterations = new Incrementor(0, new MaxIterCallback());
+---
+>         iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());
+
+SimplexOptimizer.java : 158c158
+<             if (iteration > 0) {
+---
+>             if (getIterations() > 0) {
+175c175
+< 			++iteration;
+---
+>             incrementIterationCount();
+
+NonLinearConjugateGradientOptimizer.java : 214d213
+<         int iter = 0;
+217c216
+<             ++iter;
+---
+>             incrementIterationCount();
+223c222
+<                 if (checker.converged(iter, previous, current)) {
+---
+>                 if (checker.converged(getIterations(), previous, current)) {
+277c276
+<             if (iter % n == 0 ||
+---
+>             if (getIterations() % n == 0 ||
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/60
+VersionID : 60
+results : 
+working : True
+NormalDistributionImpl.java : 126c126,128
+<         try {
+---
+>         if (FastMath.abs(dev) > 40 * standardDeviation) { 
+>             return dev < 0 ? 0.0d : 1.0d;
+>         }
+129,137d130
+<         } catch (MaxIterationsExceededException ex) {
+<             if (x < (mean - 20 * standardDeviation)) { // JDK 1.5 blows at 38
+<                 return 0;
+<             } else if (x > (mean + 20 * standardDeviation)) {
+<                 return 1;
+<             } else {
+<                 throw ex;
+<             }
+<         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/61
+VersionID : 61
+results : 
+working : True
+PoissonDistributionImpl.java : 22c22
+< import org.apache.commons.math.MathRuntimeException;
+---
+> import org.apache.commons.math.exception.NotStrictlyPositiveException;
+94c94
+<             throw MathRuntimeException.createIllegalArgumentException(LocalizedFormats.NOT_POSITIVE_POISSON_MEAN, p);
+---
+>             throw new NotStrictlyPositiveException(LocalizedFormats.MEAN, p);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/62
+VersionID : 62
+results : 
+working : True
+MultiStartUnivariateRealOptimizer.java : 146c146
+<         return optimize(f, goal, min, max, 0);
+---
+>         return optimize(f, goal, min, max, min + 0.5 * (max - min));
+160,162c160,161
+<                 final double bound1 = (i == 0) ? min : min + generator.nextDouble() * (max - min);
+<                 final double bound2 = (i == 0) ? max : min + generator.nextDouble() * (max - min);
+<                 optima[i] = optimizer.optimize(f, goal, FastMath.min(bound1, bound2), FastMath.max(bound1, bound2));
+---
+>                 final double s = (i == 0) ? startValue : min + generator.nextDouble() * (max - min);
+>                 optima[i] = optimizer.optimize(f, goal, min, max, s);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/63
+VersionID : 63
+results : 
+working : True
+MathUtils.java : 417c417
+<         return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+---
+>         return equals(x, y, 1);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/64
+VersionID : 64
+results : 
+working : True
+LevenbergMarquardtOptimizer.java : 257a258,259
+>         double[] oldObj  = new double[rows];
+>         double[] qtf     = new double[rows];
+269a272,274
+>             for (int i=0;i<rows;i++) {
+>                 qtf[i]=residuals[i];
+>             }
+278c283
+<             qTy(residuals);
+---
+>             qTy(qtf);
+316c321
+<                             sum += jacobian[i][pj] * residuals[i];
+---
+>                             sum += jacobian[i][pj] * qtf[i];
+323a329,330
+>             	updateResidualsAndCost();
+>             	current = new VectorialPointValuePair(point, objective);
+343a351,353
+>                 tmpVec    = objective;
+>                 objective = oldObj;
+>                 oldObj    = tmpVec;
+346c356
+<                 determineLMParameter(oldRes, delta, diag, work1, work2, work3);
+---
+>                 determineLMParameter(qtf, delta, diag, work1, work2, work3);
+365d374
+<                 current = new VectorialPointValuePair(point, objective);
+420a430
+>                     current = new VectorialPointValuePair(point, objective);
+422a433
+>                     if (checker != null) {
+423a435,438
+>                     	if (checker.converged(getIterations(), previous, current)) {
+>                     		return current;
+>                     	}
+>                     }
+433a449,451
+>                     tmpVec    = objective;
+>                     objective = oldObj;
+>                     oldObj    = tmpVec;
+442,445d459
+<                 } else {
+<                     if (checker.converged(getIterations(), previous, current)) {
+<                         return current;
+<                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/65
+VersionID : 65
+results : 
+working : True
+AbstractLeastSquaresOptimizer.java : 240,245c240
+<         double criterion = 0;
+<         for (int i = 0; i < rows; ++i) {
+<             final double residual = residuals[i];
+<             criterion += residual * residual * residualsWeights[i];
+<         }
+<         return Math.sqrt(criterion / rows);
+---
+>         return Math.sqrt(getChiSquare() / rows);
+258c253
+<             chiSquare += residual * residual / residualsWeights[i];
+---
+>             chiSquare += residual * residual * residualsWeights[i];
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/66
+VersionID : 66
+results : 
+working : True
+BrentOptimizer.java : 44c44
+<         setMaxEvaluations(Integer.MAX_VALUE);
+---
+>         setMaxEvaluations(1000);
+46,47c46,47
+<         setAbsoluteAccuracy(1E-10);
+<         setRelativeAccuracy(1.0e-14);
+---
+>         setAbsoluteAccuracy(1e-11);
+>         setRelativeAccuracy(1e-9);
+57,60d56
+<         throw new UnsupportedOperationException();
+<     }
+<     public double optimize(final UnivariateRealFunction f, final GoalType goalType, final double min, final double max, final double startValue) throws MaxIterationsExceededException, FunctionEvaluationException {
+<         clearResult();
+62c58
+<                         f, goalType, min, startValue, max,
+---
+>                         getMin(), getStartValue(), getMax(),
+65,67d60
+<     public double optimize(final UnivariateRealFunction f, final GoalType goalType, final double min, final double max) throws MaxIterationsExceededException, FunctionEvaluationException {
+<         return optimize(f, goalType, min, max, min + GOLDEN_SECTION * (max - min));
+<     }
+94,95d86
+<                             UnivariateRealFunction f,
+<                             GoalType goalType,
+119,120c110,111
+<         double fx = computeObjectiveValue(f, x);
+<         if (goalType == GoalType.MAXIMIZE) {
+---
+>         double fx = computeObjectiveValue(x);
+>         if (!isMinim) {
+126,127c117
+<         int count = 0;
+<         while (count < maximalIterationCount) {
+---
+>         while (true) {
+200,201c190,191
+<                 double fu = computeObjectiveValue(f, u);
+<                 if (goalType == GoalType.MAXIMIZE) {
+---
+>                 double fu = computeObjectiveValue(u);
+>                 if (!isMinim) {
+238c228
+<                 setResult(x, (goalType == GoalType.MAXIMIZE) ? -fx : fx, count);
+---
+>                 setFunctionValue(isMinim ? fx : -fx);
+241c231
+<             ++count;
+---
+>             incrementIterationsCounter();
+243d232
+<         throw new MaxIterationsExceededException(maximalIterationCount);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/67
+VersionID : 67
+results : 
+working : True
+MultiStartUnivariateRealOptimizer.java : 92c92
+<         return optimizer.getFunctionValue();
+---
+>         return optimaValues[0];
+97c97
+<         return optimizer.getResult();
+---
+>         return optima[0];
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/68
+VersionID : 68
+results : 
+working : True
+LevenbergMarquardtOptimizer.java : 165a166
+>         setConvergenceChecker(null);
+246a248
+>         VectorialPointValuePair current = new VectorialPointValuePair(point, objective);
+251a254
+>             VectorialPointValuePair previous = current;
+303c306
+<                 return new VectorialPointValuePair(point, objective);
+---
+>                 return current;
+344a348
+>                 current = new VectorialPointValuePair(point, objective);
+412a417
+>                 if (checker != null) {
+413a419,422
+>                     if (checker.converged(getIterations(), previous, current)) {
+>                         return current;                        
+>                     }
+>                 } else {
+419c428
+<                         return new VectorialPointValuePair(point, objective);
+---
+>                         return current;
+420a430
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/69
+VersionID : 69
+results : 
+working : True
+PearsonsCorrelation.java : 171c171
+<                     out[i][j] = 2 * (1 - tDistribution.cumulativeProbability(t));
+---
+>                     out[i][j] = 2 * tDistribution.cumulativeProbability(-t);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/7
+VersionID : 7
+results : 
+working : True
+AbstractIntegrator.java : 346,347c346,349
+<                 currentEvent.stepAccepted(eventT, eventY);
+<                 isLastStep = currentEvent.stop();
+---
+>                 for (final EventState state : eventsStates) {
+>                     state.stepAccepted(eventT, eventY);
+>                     isLastStep = isLastStep || state.stop();
+>                 }
+357,359d358
+<                     for (final EventState remaining : occuringEvents) {
+<                         remaining.stepAccepted(eventT, eventY);
+<                     }
+363c362,365
+<                 boolean needReset = currentEvent.reset(eventT, eventY);
+---
+>                 boolean needReset = false;
+>                 for (final EventState state : eventsStates) {
+>                     needReset =  needReset || state.reset(eventT, eventY);
+>                 }
+370,372d371
+<                     for (final EventState remaining : occuringEvents) {
+<                         remaining.stepAccepted(eventT, eventY);
+<                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/70
+VersionID : 70
+results : 
+working : True
+BisectionSolver.java : 72c72
+<         return solve(min, max);
+---
+>         return solve(f, min, max);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/71
+VersionID : 71
+results : 
+working : True
+EmbeddedRungeKuttaIntegrator.java : 299a300,303
+>                   interpolator.storeTime(stepStart);
+>                   System.arraycopy(y, 0, yTmp, 0, y0.length);
+>                   hNew     = 0;
+>                   stepSize = 0;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/71
+VersionID : 71
+results : 
+working : True
+EmbeddedRungeKuttaIntegrator.java : 299a300,303
+>                   interpolator.storeTime(stepStart);
+>                   System.arraycopy(y, 0, yTmp, 0, y0.length);
+>                   hNew     = 0;
+>                   stepSize = 0;
+
+RungeKuttaIntegrator.java : 179a180,182
+>                 interpolator.storeTime(stepStart);
+>                 System.arraycopy(y, 0, yTmp, 0, y0.length);
+>                 stepSize = 0;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/72
+VersionID : 72
+results : 
+working : True
+BrentSolver.java : 115c115
+<             setResult(yMin, 0);
+---
+>             setResult(min, 0);
+127c127
+<             setResult(yMax, 0);
+---
+>             setResult(max, 0);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/73
+VersionID : 73
+results : 
+working : True
+BrentSolver.java : 135a136,139
+>         if (yMin * yMax > 0) {
+>             throw MathRuntimeException.createIllegalArgumentException(
+>                   NON_BRACKETING_MESSAGE, min, max, yMin, yMax);
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/74
+VersionID : 74
+results : 
+working : True
+EmbeddedRungeKuttaIntegrator.java : 245c245
+<           final double[] scale;
+---
+>           final double[] scale = new double[y0.length];
+247,248c247,249
+<               scale = new double[y0.length];
+<               java.util.Arrays.fill(scale, scalAbsoluteTolerance);
+---
+>               for (int i = 0; i < scale.length; ++i) {
+>                 scale[i] = scalAbsoluteTolerance + scalRelativeTolerance * Math.abs(y[i]);
+>               }
+250c251,253
+<               scale = vecAbsoluteTolerance;
+---
+>               for (int i = 0; i < scale.length; ++i) {
+>                 scale[i] = vecAbsoluteTolerance[i] + vecRelativeTolerance[i] * Math.abs(y[i]);
+>               }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/75
+VersionID : 75
+results : 
+working : True
+Frequency.java : 303c303
+<         return getCumPct((Comparable<?>) v);
+---
+>         return getPct((Comparable<?>) v);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/76
+VersionID : 76
+results : 
+working : True
+SingularValueDecompositionImpl.java : 162c162
+<                     eigenDecomposition.getV().getSubMatrix(0, p - 1, 0, p - 1);
+---
+>                     eigenDecomposition.getV().getSubMatrix(0, n - 1, 0, p - 1);
+166c166
+<                 for (int i = 0; i < p - 1; ++i) {
+---
+>                 for (int i = 0; i < p; ++i) {
+170a171
+>                     if (i < n - 1) {
+176c177
+<                 }
+---
+>                     } else {
+178c179
+<                             wData[p - 1][j] = ei1[j] * mainBidiagonal[p - 1] / singularValues[j];
+---
+>                             wi[j] = mi * ei0[j] / singularValues[j];
+179a181,182
+>                     }
+>                 }
+248c251
+<                     eigenDecomposition.getV().getSubMatrix(0, p - 1, 0, p - 1);
+---
+>                     eigenDecomposition.getV().getSubMatrix(0, m - 1, 0, p - 1);
+252c255
+<                 for (int i = 0; i < p - 1; ++i) {
+---
+>                 for (int i = 0; i < p; ++i) {
+255a259
+>                     if (i < m - 1) {
+261c265
+<                 }
+---
+>                     } else {
+263c267
+<                             wData[p - 1][j] = ei1[j] * mainBidiagonal[p - 1] / singularValues[j];
+---
+>                             wi[j] = mi * ei0[j] / singularValues[j];
+264a269,270
+>                     }
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/77
+VersionID : 77
+results : 
+working : True
+ArrayRealVector.java : 721c721
+<             max += Math.max(max, Math.abs(a));
+---
+>             max = Math.max(max, Math.abs(a));
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/77
+VersionID : 77
+results : 
+working : True
+ArrayRealVector.java : 721c721
+<             max += Math.max(max, Math.abs(a));
+---
+>             max = Math.max(max, Math.abs(a));
+
+OpenMapRealVector.java : 498,506d497
+<     public double getLInfNorm() {
+<         double max = 0;
+<         Iterator iter = entries.iterator();
+<         while (iter.hasNext()) {
+<             iter.advance();
+<             max += iter.value();
+<         }
+<         return max;
+<     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/78
+VersionID : 78
+results : 
+working : True
+EventState.java : 190a191
+>                     if (ga * gb > 0) {
+197a199,205
+>                         final double epsilon = (forward ? 0.25 : -0.25) * convergence;
+>                         for (int k = 0; (k < 4) && (ga * gb > 0); ++k) {
+>                             ta += epsilon;
+>                             interpolator.setInterpolatedTime(ta);
+>                             ga = handler.g(ta, interpolator.getInterpolatedState());
+>                         }
+>                         if (ga * gb > 0) {
+198a207,209
+>                             throw MathRuntimeException.createInternalError(null);
+>                         }
+>                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/79
+VersionID : 79
+results : 
+working : True
+MathUtils.java : 1624c1624
+<       int sum = 0;
+---
+>       double sum = 0;
+1626c1626
+<           final int dp = p1[i] - p2[i];
+---
+>           final double dp = p1[i] - p2[i];
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/8
+VersionID : 8
+results : 
+working : True
+DiscreteDistribution.java : 181c181
+<     public T[] sample(int sampleSize) throws NotStrictlyPositiveException {
+---
+>     public Object[] sample(int sampleSize) throws NotStrictlyPositiveException {
+187c187
+<         final T[]out = (T[]) java.lang.reflect.Array.newInstance(singletons.get(0).getClass(), sampleSize);
+---
+>         final Object[] out = new Object[sampleSize];
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/80
+VersionID : 80
+results : 
+working : True
+EigenDecompositionImpl.java : 1135c1135
+<             int j = 4 * n - 1;
+---
+>             int j = 4 * (n - 1);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/81
+VersionID : 81
+results : 
+working : True
+EigenDecompositionImpl.java : 602a603
+>         upperSpectra = Math.max(upperSpectra, upper);
+905,906c906,907
+<                     for (int i = 4 * i0; i < 4 * n0 - 11; i += 4) {
+<                         if ((work[i + 3] <= TOLERANCE_2 * work[i]) &&
+---
+>                     for (int i = 4 * i0; i < 4 * n0 - 16; i += 4) {
+>                         if ((work[i + 3] <= TOLERANCE_2 * work[i]) ||
+1543c1544
+<                 if (end - start > 2) {
+---
+>                 if (end - start > 3) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/82
+VersionID : 82
+results : 
+working : True
+SimplexSolver.java : 82c82
+<             if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+---
+>             if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/83
+VersionID : 83
+results : 
+working : True
+SimplexTableau.java : 292c292
+<         int start = getNumObjectiveFunctions();
+---
+>         int start = ignoreObjectiveRows ? getNumObjectiveFunctions() : 0;
+341c341
+<       Integer negativeVarBasicRow = getBasicRow(getNegativeDecisionVariableOffset());
+---
+>       Integer negativeVarBasicRow = getBasicRowForSolution(getNegativeDecisionVariableOffset());
+345c345
+<           Integer basicRow = getBasicRow(getNumObjectiveFunctions() + i);
+---
+>           Integer basicRow = getBasicRowForSolution(getNumObjectiveFunctions() + i);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/84
+VersionID : 84
+results : 
+working : True
+MultiDirectional.java : 63a64
+>         final RealConvergenceChecker checker = getConvergenceChecker();
+91a93,94
+>                 return;
+>             }
+93a97,102
+>             final int iter = getIterations();
+>             boolean converged = true;
+>             for (int i = 0; i < simplex.length; ++i) {
+>                 converged &= checker.converged(iter, original[i], simplex[i]);
+>             }
+>             if (converged) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Math/9
+VersionID : 9
+results : 
+working : True
+Line.java : 87c87,88
+<         final Line reverted = new Line(zero, zero.subtract(direction));
+---
+>         final Line reverted = new Line(this);
+>         reverted.direction = reverted.direction.negate();
+

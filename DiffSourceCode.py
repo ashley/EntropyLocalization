@@ -1,20 +1,13 @@
-from openpyxl import Workbook
 import subprocess
 import os, sys
 
-wb = Workbook()
-ws = wb.active
-
-def saveWorkbook():
-    wb.save("save.xlsx")
+fi = open("Results.txt", "wb")
 
 def prepareDirectory():
-    diffPath = "/Users/ashleychen/Desktop/EntropyLocalization/Copies/Time"
-    #diffPath = raw_input("Enter absolute path to aggregated source code directory: ")
+    diffPath = raw_input("Enter absolute path to aggregated source code directory: ")
     versions = [version for version in os.listdir(diffPath) if version != ".DS_Store"] #filter out default mac files
-    #for versionDirectory in versions:
-    versionDirectory = versions[0]
-    getDiffData(diffPath + "/" + versionDirectory, versionDirectory)
+    for versionDirectory in versions:
+        getDiffData(diffPath + "/" + versionDirectory, versionDirectory)
 
 def getDiffData(versionPath, versionID):
     before_files = [i for i in os.listdir(versionPath + "/b") if i != ".DS_store"]
@@ -26,8 +19,10 @@ def getDiffData(versionPath, versionID):
             "results" : ""
             }
     bug_information = {}
+    count = 0
     if before_files == after_files:
         for fileName in before_files:
+            appendWorkbook(version_information)
             diffCommand = ''.join([
                 "diff ", 
                 versionPath, "/b/", fileName,  " ",  
@@ -36,12 +31,12 @@ def getDiffData(versionPath, versionID):
             process = subprocess.Popen(diffCommand.split(), stdout=subprocess.PIPE)
             output, error = process.communicate()
             bug_information[fileName] = output
-    parseOutput(bug_information["Partial.java"])
-    #appendWorkbook(version_information, bug_information)
+            appendWorkbook(bug_information)
+            count += 1
 
-def appendWorkbook(versionMap, bugMap):
-    appending = [ v for v in bugMap.values() ]
-    ws.append(appending)
+def appendWorkbook(inputMap):
+    for key, value in inputMap.items():
+        fi.write(key + " : " + value + "\n")
 
 def parseOutput(result):
     result = result.split("\n")
@@ -49,6 +44,5 @@ def parseOutput(result):
 
 def main():
     prepareDirectory()
-    saveWorkbook()
 
 main()

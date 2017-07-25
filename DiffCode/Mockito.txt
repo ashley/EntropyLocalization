@@ -1,0 +1,546 @@
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/1
+VersionID : 1
+results : 
+working : True
+InvocationMatcher.java : 123c123,134
+<             throw new UnsupportedOperationException();
+---
+>             for (int position = 0; position < indexOfVararg; position++) {
+>                 Matcher m = matchers.get(position);
+>                 if (m instanceof CapturesArguments) {
+>                     ((CapturesArguments) m).captureFrom(invocation.getArgumentAt(position, Object.class));
+>                 }
+>             }
+>             for (int position = indexOfVararg; position < matchers.size(); position++) {
+>                 Matcher m = matchers.get(position);
+>                 if (m instanceof CapturesArguments) {
+>                     ((CapturesArguments) m).captureFrom(invocation.getRawArguments()[position - indexOfVararg]);
+>                 }
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/10
+VersionID : 10
+results : 
+working : True
+ReturnsDeepStubs.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/11
+VersionID : 11
+results : 
+working : True
+DelegatingMethod.java : 54a55,61
+>         if (this == o) {
+>             return true;
+>         }
+>         if (o instanceof DelegatingMethod) {
+>             DelegatingMethod that = (DelegatingMethod) o;
+>             return method.equals(that.method);
+>         } else {
+55a63
+>         }
+60c68
+<         return 1;
+---
+>         return method.hashCode();
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/12
+VersionID : 12
+results : 
+working : True
+GenericMaster.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/13
+VersionID : 13
+results : 
+working : True
+MockHandler.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/14
+VersionID : 14
+results : 
+working : True
+MockHandler.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/14
+VersionID : 14
+results : 
+working : True
+MockHandler.java : 
+MockitoCore.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/15
+VersionID : 15
+results : 
+working : True
+FinalMockCandidateFilter.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/16
+VersionID : 16
+results : 
+working : True
+Mockito.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/16
+VersionID : 16
+results : 
+working : True
+MockitoCore.java : 
+Mockito.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/17
+VersionID : 17
+results : 
+working : True
+MockSettingsImpl.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/17
+VersionID : 17
+results : 
+working : True
+MockUtil.java : 
+MockSettingsImpl.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/18
+VersionID : 18
+results : 
+working : True
+ReturnsEmptyValues.java : 86a87,88
+>         } else if (type == Iterable.class) {
+>             return new ArrayList<Object>(0);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/19
+VersionID : 19
+results : 
+working : True
+FinalMockCandidateFilter.java : 12a13
+> import java.util.List;
+23c24
+<     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, final Object fieldInstance) {
+---
+>     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, List<Field> fields, final Object fieldInstance) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/19
+VersionID : 19
+results : 
+working : True
+FinalMockCandidateFilter.java : 12a13
+> import java.util.List;
+23c24
+<     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, final Object fieldInstance) {
+---
+>     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, List<Field> fields, final Object fieldInstance) {
+
+MockCandidateFilter.java : 8a9
+> import java.util.List;
+15c16
+<             Object fieldInstance
+---
+>             List<Field> fields, Object instance
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/19
+VersionID : 19
+results : 
+working : True
+FinalMockCandidateFilter.java : 12a13
+> import java.util.List;
+23c24
+<     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, final Object fieldInstance) {
+---
+>     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, List<Field> fields, final Object fieldInstance) {
+
+NameBasedCandidateFilter.java : 23c23
+< 			Field field, Object fieldInstance) {
+---
+> 			Field field, List<Field> fields, Object fieldInstance) {
+31c31
+< 			return next.filterCandidate(mockNameMatches, field,
+---
+> 			return next.filterCandidate(mockNameMatches, field, fields,
+41a42,57
+> 		} else if (mocks.size() == 1) {
+> 			String mockName = mockUtil.getMockName(mocks.iterator().next())
+> 					.toString();
+> 
+> 			for (Field otherField : fields) {
+> 				if (!otherField.equals(field)
+> 						&& otherField.getType().equals(field.getType())
+> 						&& otherField.getName().equals(mockName)) {
+> 
+> 					return new OngoingInjecter() {
+> 						public Object thenInject() {
+> 							return null;
+> 						}
+> 					};
+> 				}
+> 			}
+43c59
+< 		return next.filterCandidate(mocks, field, fieldInstance);
+---
+> 		return next.filterCandidate(mocks, field, fields, fieldInstance);
+
+MockCandidateFilter.java : 8a9
+> import java.util.List;
+15c16
+<             Object fieldInstance
+---
+>             List<Field> fields, Object instance
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/19
+VersionID : 19
+results : 
+working : True
+FinalMockCandidateFilter.java : 12a13
+> import java.util.List;
+23c24
+<     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, final Object fieldInstance) {
+---
+>     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, List<Field> fields, final Object fieldInstance) {
+
+PropertyAndSetterInjection.java : 114c114
+<             Object injected = mockCandidateFilter.filterCandidate(mocks, field, instance).thenInject();
+---
+>             Object injected = mockCandidateFilter.filterCandidate(mocks, field, orderedInstanceFields, instance).thenInject();
+
+NameBasedCandidateFilter.java : 23c23
+< 			Field field, Object fieldInstance) {
+---
+> 			Field field, List<Field> fields, Object fieldInstance) {
+31c31
+< 			return next.filterCandidate(mockNameMatches, field,
+---
+> 			return next.filterCandidate(mockNameMatches, field, fields,
+41a42,57
+> 		} else if (mocks.size() == 1) {
+> 			String mockName = mockUtil.getMockName(mocks.iterator().next())
+> 					.toString();
+> 
+> 			for (Field otherField : fields) {
+> 				if (!otherField.equals(field)
+> 						&& otherField.getType().equals(field.getType())
+> 						&& otherField.getName().equals(mockName)) {
+> 
+> 					return new OngoingInjecter() {
+> 						public Object thenInject() {
+> 							return null;
+> 						}
+> 					};
+> 				}
+> 			}
+43c59
+< 		return next.filterCandidate(mocks, field, fieldInstance);
+---
+> 		return next.filterCandidate(mocks, field, fields, fieldInstance);
+
+MockCandidateFilter.java : 8a9
+> import java.util.List;
+15c16
+<             Object fieldInstance
+---
+>             List<Field> fields, Object instance
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/19
+VersionID : 19
+results : 
+working : True
+FinalMockCandidateFilter.java : 12a13
+> import java.util.List;
+23c24
+<     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, final Object fieldInstance) {
+---
+>     public OngoingInjecter filterCandidate(final Collection<Object> mocks, final Field field, List<Field> fields, final Object fieldInstance) {
+
+PropertyAndSetterInjection.java : 114c114
+<             Object injected = mockCandidateFilter.filterCandidate(mocks, field, instance).thenInject();
+---
+>             Object injected = mockCandidateFilter.filterCandidate(mocks, field, orderedInstanceFields, instance).thenInject();
+
+TypeBasedCandidateFilter.java : 20c20
+<     public OngoingInjecter filterCandidate(Collection<Object> mocks, Field field, Object fieldInstance) {
+---
+>     public OngoingInjecter filterCandidate(Collection<Object> mocks, Field field, List<Field> fields, Object fieldInstance) {
+28c28
+<         return next.filterCandidate(mockTypeMatches, field, fieldInstance);
+---
+>         return next.filterCandidate(mockTypeMatches, field, fields, fieldInstance);
+
+NameBasedCandidateFilter.java : 23c23
+< 			Field field, Object fieldInstance) {
+---
+> 			Field field, List<Field> fields, Object fieldInstance) {
+31c31
+< 			return next.filterCandidate(mockNameMatches, field,
+---
+> 			return next.filterCandidate(mockNameMatches, field, fields,
+41a42,57
+> 		} else if (mocks.size() == 1) {
+> 			String mockName = mockUtil.getMockName(mocks.iterator().next())
+> 					.toString();
+> 
+> 			for (Field otherField : fields) {
+> 				if (!otherField.equals(field)
+> 						&& otherField.getType().equals(field.getType())
+> 						&& otherField.getName().equals(mockName)) {
+> 
+> 					return new OngoingInjecter() {
+> 						public Object thenInject() {
+> 							return null;
+> 						}
+> 					};
+> 				}
+> 			}
+43c59
+< 		return next.filterCandidate(mocks, field, fieldInstance);
+---
+> 		return next.filterCandidate(mocks, field, fields, fieldInstance);
+
+MockCandidateFilter.java : 8a9
+> import java.util.List;
+15c16
+<             Object fieldInstance
+---
+>             List<Field> fields, Object instance
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/2
+VersionID : 2
+results : 
+working : True
+Timer.java : 2a3
+> import org.mockito.exceptions.Reporter;
+9a11
+>         validateInput(durationMillis);
+27a30,34
+>     private void validateInput(long durationMillis) {
+>         if (durationMillis < 0) {
+>             new Reporter().cannotCreateTimerWithNegativeDurationTime(durationMillis);
+>         }
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/20
+VersionID : 20
+results : 
+working : True
+ByteBuddyMockMaker.java : 31a32
+>         Instantiator instantiator = new InstantiatorProvider().getInstantiator(settings);
+34c35
+<             mockInstance = classInstantiator.instantiate(mockedProxyType);
+---
+>             mockInstance = instantiator.newInstance(mockedProxyType);
+45c46
+<                     "  instance creation by : " + classInstantiator.getClass().getSimpleName(),
+---
+>                     "  instance creation by : " + instantiator.getClass().getSimpleName(),
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/21
+VersionID : 21
+results : 
+working : True
+ConstructorInstantiator.java : 17c17
+<         return withOuterClass(cls);
+---
+>         return withParams(cls, outerClassInstance);
+20c20
+<     private <T> T withOuterClass(Class<T> cls) {
+---
+>     private static <T> T withParams(Class<T> cls, Object... params) {
+24,25c24,29
+<             Constructor<T> c = cls.getDeclaredConstructor(outerClassInstance.getClass());
+<             return c.newInstance(outerClassInstance);
+---
+>             for (Constructor<?> constructor : cls.getDeclaredConstructors()) {
+>                 Class<?>[] types = constructor.getParameterTypes();
+>                 if (paramsMatch(types, params)) {
+>                     return (T) constructor.newInstance(params);
+>                 }
+>             }
+28a33
+>         throw paramsException(cls, null);
+35a41,51
+>     private static boolean paramsMatch(Class<?>[] types, Object[] params) {
+>         if (params.length != types.length) {
+>             return false;
+>         }
+>         for (int i = 0; i < params.length; i++) {
+>             if (!types[i].isInstance(params[i])) {
+>                 return false;
+>             }
+>         }
+>         return true;
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/22
+VersionID : 22
+results : 
+working : True
+Equality.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/23
+VersionID : 23
+results : 
+working : True
+ReturnsDeepStubs.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/24
+VersionID : 24
+results : 
+working : True
+ReturnsEmptyValues.java : 76c76
+<             return 1;
+---
+>             return invocation.getMock() == invocation.getArguments()[0] ? 0 : 1;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/25
+VersionID : 25
+results : 
+working : True
+ReturnsDeepStubs.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/26
+VersionID : 26
+results : 
+working : True
+Primitives.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/27
+VersionID : 27
+results : 
+working : True
+MockUtil.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/28
+VersionID : 28
+results : 
+working : True
+DefaultInjectionEngine.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/29
+VersionID : 29
+results : 
+working : True
+Same.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/3
+VersionID : 3
+results : 
+working : True
+InvocationMatcher.java : 127,128c127
+<             for (int position = indexOfVararg; position < matchers.size(); position++) {
+<                 Matcher m = matchers.get(position);
+---
+>             for (Matcher m : uniqueMatcherSet(indexOfVararg)) {
+130c129,132
+<                     ((CapturesArguments) m).captureFrom(invocation.getRawArguments()[position - indexOfVararg]);
+---
+>                     Object rawArgument = invocation.getRawArguments()[indexOfVararg];
+>                     for (int i = 0; i < Array.getLength(rawArgument); i++) {
+>                         ((CapturesArguments) m).captureFrom(Array.get(rawArgument, i));
+>                     }
+142a145,156
+>     private Set<Matcher> uniqueMatcherSet(int indexOfVararg) {
+>         HashSet<Matcher> set = new HashSet<Matcher>();
+>         for (int position = indexOfVararg; position < matchers.size(); position++) {
+>             Matcher matcher = matchers.get(position);
+>             if(matcher instanceof MatcherDecorator) {
+>                 set.add(((MatcherDecorator) matcher).getActualMatcher());
+>             } else {
+>                 set.add(matcher);
+>             }
+>         }
+>         return set;
+>     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/30
+VersionID : 30
+results : 
+working : True
+Reporter.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/30
+VersionID : 30
+results : 
+working : True
+ReturnsSmartNulls.java : 
+Reporter.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/31
+VersionID : 31
+results : 
+working : True
+ReturnsSmartNulls.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/32
+VersionID : 32
+results : 
+working : True
+SpyAnnotationEngine.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/33
+VersionID : 33
+results : 
+working : True
+InvocationMatcher.java : 97a98
+>         if (m1.getName() != null && m1.getName().equals(m2.getName())) {
+99c100,110
+<         return m1.equals(m2);
+---
+>         	Class[] params1 = m1.getParameterTypes();
+>         	Class[] params2 = m2.getParameterTypes();
+>         	if (params1.length == params2.length) {
+>         	    for (int i = 0; i < params1.length; i++) {
+>         		if (params1[i] != params2[i])
+>         		    return false;
+>         	    }
+>         	    return true;
+>         	}
+>         }
+>         return false;
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/34
+VersionID : 34
+results : 
+working : True
+InvocationMatcher.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/35
+VersionID : 35
+results : 
+working : True
+Matchers.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/36
+VersionID : 36
+results : 
+working : True
+Invocation.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/37
+VersionID : 37
+results : 
+working : True
+AnswersValidator.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/38
+VersionID : 38
+results : 
+working : True
+ArgumentMatchingTool.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/4
+VersionID : 4
+results : 
+working : True
+Reporter.java : 424c424
+<                 "But found this interaction on mock '" + undesired.getMock() + "':",
+---
+>                 "But found this interaction on mock '" + safelyGetMockName(undesired.getMock()) + "':",
+434c434
+<                 "But found this interaction on mock '" + undesired.getMock() + "':",
+---
+>                 "But found this interaction on mock '" + safelyGetMockName(undesired.getMock()) + "':",
+676a677,679
+>         if (details.getCause() == null) {
+>             return details.getMessage();
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/5
+VersionID : 5
+results : 
+working : True
+VerificationOverTimeImpl.java : 91c91
+<             catch (org.mockito.exceptions.verification.junit.ArgumentsAreDifferent e) {
+---
+>             catch (AssertionError e) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/6
+VersionID : 6
+results : 
+working : True
+Matchers.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/7
+VersionID : 7
+results : 
+working : True
+GenericMetadataSupport.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/8
+VersionID : 8
+results : 
+working : True
+GenericMetadataSupport.java : 
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Mockito/9
+VersionID : 9
+results : 
+working : True
+CallsRealMethods.java : 

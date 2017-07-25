@@ -1,0 +1,548 @@
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/1
+VersionID : 1
+results : 
+working : True
+Partial.java : 216a217,225
+>                 if (loopUnitField.isSupported() == false) {
+>                     if (lastUnitField.isSupported()) {
+>                         throw new IllegalArgumentException("Types array must be in order largest-smallest: " +
+>                                         types[i - 1].getName() + " < " + loopType.getName());
+>                     } else {
+>                         throw new IllegalArgumentException("Types array must not contain duplicate unsupported: " +
+>                                         types[i - 1].getName() + " and " + loopType.getName());
+>                     }
+>                 }
+221c230
+<                 } else if (compare == 0) {
+---
+>                 } else if (compare == 0 && lastUnitField.equals(loopUnitField)) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/1
+VersionID : 1
+results : 
+working : True
+Partial.java : 216a217,225
+>                 if (loopUnitField.isSupported() == false) {
+>                     if (lastUnitField.isSupported()) {
+>                         throw new IllegalArgumentException("Types array must be in order largest-smallest: " +
+>                                         types[i - 1].getName() + " < " + loopType.getName());
+>                     } else {
+>                         throw new IllegalArgumentException("Types array must not contain duplicate unsupported: " +
+>                                         types[i - 1].getName() + " and " + loopType.getName());
+>                     }
+>                 }
+221c230
+<                 } else if (compare == 0) {
+---
+>                 } else if (compare == 0 && lastUnitField.equals(loopUnitField)) {
+
+UnsupportedDurationField.java : 227,229d226
+<         if (durationField.isSupported()) {
+<             return 1;
+<         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/10
+VersionID : 10
+results : 
+working : True
+BaseSingleFieldPeriod.java : 51a52
+>     private static final long START_1972 = 2L * 365L * 86400L * 1000L;
+104c105
+<         int[] values = chrono.get(zeroInstance, chrono.set(start, 0L), chrono.set(end, 0L));
+---
+>         int[] values = chrono.get(zeroInstance, chrono.set(start, START_1972), chrono.set(end, START_1972));
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/11
+VersionID : 11
+results : 
+working : True
+ZoneInfoCompiler.java : 68,71c68,72
+<     static ThreadLocal<Boolean> cVerbose = new ThreadLocal<Boolean>();
+<     static {
+<         cVerbose.set(Boolean.FALSE);
+<     }
+---
+>     static ThreadLocal<Boolean> cVerbose = new ThreadLocal<Boolean>() {
+>         protected Boolean initialValue() {
+>             return Boolean.FALSE;
+>         }
+>     };
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/12
+VersionID : 12
+results : 
+working : True
+LocalDate.java : 209a210
+>         int era = calendar.get(Calendar.ERA);
+212c213
+<             yearOfEra,
+---
+>             (era == GregorianCalendar.AD ? yearOfEra : 1 - yearOfEra),
+242a244
+>         if (date.getTime() < 0) {
+243a246,249
+>             GregorianCalendar cal = new GregorianCalendar();
+>             cal.setTime(date);
+>             return fromCalendarFields(cal);
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/12
+VersionID : 12
+results : 
+working : True
+LocalDateTime.java : 198a199
+>         int era = calendar.get(Calendar.ERA);
+201c202
+<             yearOfEra,
+---
+>             (era == GregorianCalendar.AD ? yearOfEra : 1 - yearOfEra),
+235a237
+>         if (date.getTime() < 0) {
+236a239,242
+>             GregorianCalendar cal = new GregorianCalendar();
+>             cal.setTime(date);
+>             return fromCalendarFields(cal);
+>         }
+
+LocalDate.java : 209a210
+>         int era = calendar.get(Calendar.ERA);
+212c213
+<             yearOfEra,
+---
+>             (era == GregorianCalendar.AD ? yearOfEra : 1 - yearOfEra),
+242a244
+>         if (date.getTime() < 0) {
+243a246,249
+>             GregorianCalendar cal = new GregorianCalendar();
+>             cal.setTime(date);
+>             return fromCalendarFields(cal);
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/13
+VersionID : 13
+results : 
+working : True
+PeriodFormatterBuilder.java : 1098c1098
+<                 sum = Math.max(sum, 4);
+---
+>                 sum = (valueLong < 0 ? Math.max(sum, 5) : Math.max(sum, 4));
+1132a1133
+>             int bufLen = buf.length();
+1141a1143,1145
+>                     if (valueLong < 0 && valueLong > -DateTimeConstants.MILLIS_PER_SECOND) {
+>                         buf.insert(bufLen, '-');
+>                     }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/14
+VersionID : 14
+results : 
+working : True
+BasicMonthOfYearDateTimeField.java : 208a209
+>         if (partial.size() > 0 && partial.getFieldType(0).equals(DateTimeFieldType.monthOfYear()) && fieldIndex == 0) {
+209a211,214
+>             int curMonth0 = partial.getValue(0) - 1;
+>             int newMonth = ((curMonth0 + (valueToAdd % 12) + 12) % 12) + 1;
+>             return set(partial, 0, values, newMonth);
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/15
+VersionID : 15
+results : 
+working : True
+FieldUtils.java : 137a138,140
+>                 if (val1 == Long.MIN_VALUE) {
+>                     throw new ArithmeticException("Multiplication overflows a long: " + val1 + " * " + val2);
+>                 }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/16
+VersionID : 16
+results : 
+working : True
+DateTimeFormatter.java : 709c709
+<             instantLocal, chrono, iLocale, iPivotYear, iDefaultYear);
+---
+>             instantLocal, chrono, iLocale, iPivotYear, chrono.year().get(instantLocal));
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/17
+VersionID : 17
+results : 
+working : True
+DateTimeZone.java : 1167,1169c1167,1171
+<         long instantBefore = convertUTCToLocal(instant - 3 * DateTimeConstants.MILLIS_PER_HOUR);
+<         long instantAfter = convertUTCToLocal(instant + 3 * DateTimeConstants.MILLIS_PER_HOUR);
+<         if (instantBefore == instantAfter) {
+---
+>         long instantBefore = instant - 3 * DateTimeConstants.MILLIS_PER_HOUR;
+>         long instantAfter = instant + 3 * DateTimeConstants.MILLIS_PER_HOUR;
+>         long offsetBefore = getOffset(instantBefore);
+>         long offsetAfter = getOffset(instantAfter);
+>         if (offsetBefore <= offsetAfter) {
+1174,1175c1176,1182
+<         long local = convertUTCToLocal(instant);
+<         return convertLocalToUTC(local, false, earlierOrLater ? instantAfter : instantBefore);
+---
+>         long diff = offsetBefore - offsetAfter;
+>         long transition = nextTransition(instantBefore);
+>         long overlapStart = transition - diff;
+>         long overlapEnd = transition + diff;
+>         if (instant < overlapStart || instant >= overlapEnd) {
+>           return instant;  // not an overlap
+>         }
+1177a1185,1186
+>         long afterStart = instant - overlapStart;
+>         if (afterStart >= diff) {
+1178a1188,1189
+>           return earlierOrLater ? instant : instant - diff;
+>         } else {
+1179a1191,1192
+>           return earlierOrLater ? instant + diff : instant;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/18
+VersionID : 18
+results : 
+working : True
+GJChronology.java : 363a364
+>         try {
+366a368,378
+>         } catch (IllegalFieldValueException ex) {
+>             if (monthOfYear != 2 || dayOfMonth != 29) {
+>                 throw ex;
+>             }
+>             instant = iGregorianChronology.getDateTimeMillis
+>                 (year, monthOfYear, 28,
+>                  hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+>             if (instant >= iCutoverMillis) {
+>                 throw ex;
+>             }
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/19
+VersionID : 19
+results : 
+working : True
+DateTimeZone.java : 900c900
+<         } else if (offsetLocal > 0) {
+---
+>         } else if (offsetLocal >= 0) {
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/2
+VersionID : 2
+results : 
+working : True
+Partial.java : 218c218
+<                 if (compare < 0 || (compare != 0 && loopUnitField.isSupported() == false)) {
+---
+>                 if (compare < 0) {
+448a449,451
+>                             if (fieldType.getRangeDurationType() == null) {
+>                                 break;
+>                             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/2
+VersionID : 2
+results : 
+working : True
+Partial.java : 218c218
+<                 if (compare < 0 || (compare != 0 && loopUnitField.isSupported() == false)) {
+---
+>                 if (compare < 0) {
+448a449,451
+>                             if (fieldType.getRangeDurationType() == null) {
+>                                 break;
+>                             }
+
+UnsupportedDurationField.java : 226a227,229
+>         if (durationField.isSupported()) {
+>             return 1;
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/20
+VersionID : 20
+results : 
+working : True
+DateTimeFormatterBuilder.java : 2541a2542
+>             String best = null;
+2544,2545c2545,2547
+<                     bucket.setZone(DateTimeZone.forID(id));
+<                     return position + id.length();
+---
+>                 	if (best == null || id.length() > best.length()) {
+>                 		best = id;
+>                 	}
+2547a2550,2553
+>             if (best != null) {
+>                 bucket.setZone(DateTimeZone.forID(best));
+>                 return position + best.length();
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/21
+VersionID : 21
+results : 
+working : True
+DefaultNameProvider.java : 65a66,73
+>             String[][] zoneStringsEn = DateTimeUtils.getDateFormatSymbols(Locale.ENGLISH).getZoneStrings();
+>             String[] setEn = null;
+>             for (String[] strings : zoneStringsEn) {
+>               if (strings != null && strings.length == 5 && id.equals(strings[0])) {
+>                 setEn = strings;
+>                 break;
+>               }
+>             }
+70a79,81
+>                 break;
+>               }
+>             }
+72c83,84
+<               byNameKeyCache.put(setLoc[2], new String[] {setLoc[2], setLoc[1]});
+---
+>             if (setEn != null && setLoc != null) {
+>               byNameKeyCache.put(setEn[2], new String[] {setLoc[2], setLoc[1]});
+76,77c88,89
+<               if (setLoc[2].equals(setLoc[4])) {
+<                   byNameKeyCache.put(setLoc[4] + "-Summer", new String[] {setLoc[4], setLoc[3]});
+---
+>               if (setEn[2].equals(setEn[4])) {
+>                   byNameKeyCache.put(setEn[4] + "-Summer", new String[] {setLoc[4], setLoc[3]});
+79,81c91
+<                   byNameKeyCache.put(setLoc[4], new String[] {setLoc[4], setLoc[3]});
+<               }
+<                 break;
+---
+>                   byNameKeyCache.put(setEn[4], new String[] {setLoc[4], setLoc[3]});
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/22
+VersionID : 22
+results : 
+working : True
+BasePeriod.java : 222c222
+<         this(duration, null, null);
+---
+>         super();
+223a224,228
+>         iType = PeriodType.time();
+>         int[] values = ISOChronology.getInstanceUTC().get(this, duration);
+>         iType = PeriodType.standard();
+>         iValues = new int[8];
+>         System.arraycopy(values, 0, iValues, 4, 4);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/23
+VersionID : 23
+results : 
+working : True
+DateTimeZone.java : 563a564,568
+>             map.put("WET", "WET");
+>             map.put("CET", "CET");
+>             map.put("MET", "CET");
+>             map.put("ECT", "CET");
+>             map.put("EET", "EET");
+572c577
+<             map.put("IET", "America/Indianapolis");
+---
+>             map.put("IET", "America/Indiana/Indianapolis");
+575c580
+<             map.put("AGT", "America/Buenos_Aires");
+---
+>             map.put("AGT", "America/Argentina/Buenos_Aires");
+577,578d581
+<             map.put("WET", "Europe/London");
+<             map.put("ECT", "Europe/Paris");
+581d583
+<             map.put("EET", "Europe/Bucharest");
+583d584
+<             map.put("MET", "Asia/Tehran");
+586c587
+<             map.put("IST", "Asia/Calcutta");
+---
+>             map.put("IST", "Asia/Kolkata");
+588c589
+<             map.put("VST", "Asia/Saigon");
+---
+>             map.put("VST", "Asia/Ho_Chi_Minh");
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/24
+VersionID : 24
+results : 
+working : True
+DateTimeParserBucket.java : 354a355,359
+>             if (resetFields) {
+>                 for (int i = 0; i < count; i++) {
+>                     millis = savedFields[i].set(millis, i == (count - 1));
+>                 }
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/27
+VersionID : 27
+results : 
+working : True
+PeriodFormatterBuilder.java : 800a801
+>             if (sep.iAfterParser == null && sep.iAfterPrinter == null) {
+803a805
+>             }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/3
+VersionID : 3
+results : 
+working : True
+MutableDateTime.java : 638a639
+>         if (amount != 0) {
+639a641
+>         }
+659a662
+>         if (years != 0) {
+660a664
+>         }
+680a685
+>         if (weekyears != 0) {
+681a687
+>         }
+701a708
+>         if (months != 0) {
+702a710
+>         }
+722a731
+>         if (weeks != 0) {
+723a733
+>         }
+763a774
+>         if (days != 0) {
+764a776
+>         }
+784a797
+>         if (hours != 0) {
+785a799
+>         }
+815a830
+>         if (minutes != 0) {
+816a832
+>         }
+846a863
+>         if (seconds != 0) {
+847a865
+>         }
+879a898
+>         if (millis != 0) {
+880a900
+>         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/4
+VersionID : 4
+results : 
+working : True
+Partial.java : 464c464
+<             Partial newPartial = new Partial(iChronology, newTypes, newValues);
+---
+>             Partial newPartial = new Partial(newTypes, newValues, iChronology);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/5
+VersionID : 5
+results : 
+working : True
+Period.java : 1628,1631c1628,1632
+<             years = FieldUtils.safeAdd(years, months / 12);
+<             months = months % 12;
+<             if (years != 0) {
+<                 result = result.withYears(years);
+---
+>             long totalMonths = years * 12L + months;
+>             if (type.isSupported(DurationFieldType.YEARS_TYPE)) {
+>                 int normalizedYears = FieldUtils.safeToInt(totalMonths / 12);
+>                 result = result.withYears(normalizedYears);
+>                 totalMonths = totalMonths - (normalizedYears * 12);
+1633,1634c1634,1640
+<             if (months != 0) {
+<                 result = result.withMonths(months);
+---
+>             if (type.isSupported(DurationFieldType.MONTHS_TYPE)) {
+>                 int normalizedMonths = FieldUtils.safeToInt(totalMonths);
+>                 result = result.withMonths(normalizedMonths);
+>                 totalMonths = totalMonths - normalizedMonths;
+>             }
+>             if (totalMonths != 0) {
+>                 throw new UnsupportedOperationException("Unable to normalize as PeriodType is missing either years or months but period has a month/year amount: " + toString());
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/6
+VersionID : 6
+results : 
+working : True
+GJChronology.java : 195a196,199
+>             LocalDate cutoverDate = new LocalDate(cutoverInstant.getMillis(), GregorianChronology.getInstance(zone));
+>             if (cutoverDate.getYear() <= 0) {
+>                 throw new IllegalArgumentException("Cutover too early. Must be on or after 0001-01-01.");
+>             }
+978a983,993
+>                         if (iConvertByWeekyear) {
+>                             int wyear = iGregorianChronology.weekyear().get(instant);
+>                             if (wyear <= 0) {
+>                                 instant = iGregorianChronology.weekyear().add(instant, -1);
+>                             }
+>                         } else {
+>                             int year = iGregorianChronology.year().get(instant);
+>                             if (year <= 0) {
+>                                 instant = iGregorianChronology.year().add(instant, -1);
+>                             }
+>                         }
+1000a1016,1026
+>                         if (iConvertByWeekyear) {
+>                             int wyear = iGregorianChronology.weekyear().get(instant);
+>                             if (wyear <= 0) {
+>                                 instant = iGregorianChronology.weekyear().add(instant, -1);
+>                             }
+>                         } else {
+>                             int year = iGregorianChronology.year().get(instant);
+>                             if (year <= 0) {
+>                                 instant = iGregorianChronology.year().add(instant, -1);
+>                             }
+>                         }
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/7
+VersionID : 7
+results : 
+working : True
+DateTimeFormatter.java : 707a708
+>         int defaultYear = DateTimeUtils.getChronology(chrono).year().get(instantMillis);
+710d710
+<         int defaultYear = chrono.year().get(instantLocal);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/8
+VersionID : 8
+results : 
+working : True
+DateTimeZone.java : 279c279
+<         if (minutesOffset < 0 || minutesOffset > 59) {
+---
+>         if (minutesOffset < -59 || minutesOffset > 59) {
+281a282,284
+>         if (hoursOffset > 0 && minutesOffset < 0) {
+>             throw new IllegalArgumentException("Positive hours must not have negative minutes: " + minutesOffset);
+>         }
+286c289
+<                 minutesOffset = hoursInMinutes - minutesOffset;
+---
+>                 minutesOffset = hoursInMinutes - Math.abs(minutesOffset);
+
+path : /Users/ashleychen/Desktop/EntropyLocalization/Copies/Time/9
+VersionID : 9
+results : 
+working : True
+DateTimeZone.java : 257a258,260
+>         if (hoursOffset < -23 || hoursOffset > 23) {
+>             throw new IllegalArgumentException("Hours out of range: " + hoursOffset);
+>         }
+263c266
+<             int hoursInMinutes = FieldUtils.safeMultiply(hoursOffset, 60);
+---
+>             int hoursInMinutes = hoursOffset * 60;
+265c268
+<                 minutesOffset = FieldUtils.safeAdd(hoursInMinutes, -minutesOffset);
+---
+>                 minutesOffset = hoursInMinutes - minutesOffset;
+267c270
+<                 minutesOffset = FieldUtils.safeAdd(hoursInMinutes, minutesOffset);
+---
+>                 minutesOffset = hoursInMinutes + minutesOffset;
+282a286,288
+>         if (millisOffset < -MAX_MILLIS || millisOffset > MAX_MILLIS) {
+>             throw new IllegalArgumentException("Millis out of range: " + millisOffset);
+>         }
+
