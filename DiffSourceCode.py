@@ -62,3 +62,5 @@ def parseOutput(result):
 def main():
     prepareDirectory()
 
+if __name__ == "__main__":
+    main()
