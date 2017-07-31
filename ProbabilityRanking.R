@@ -1,5 +1,5 @@
 library(readr)
-faults <- read_csv("/Users/ashleychen/Desktop/EntropyLocalization/Time/Time1_Probability.txt", 
+faults <- read_csv("/Users/ashleychen/Desktop/EntropyLocalization/Lang/Lang27_Probability.txt", 
                                      col_names = FALSE)
 
 colnames(faults)[1] <- "Fault"

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-cd Time
+cd Lang
 
-for i in {1..27}
+for i in {1..65}
 	do
-		tail -n +59 Time${i}_Probability.txt > tmp_Time${i}.txt
-		rm Time${i}_Probability.txt
-		mv tmp_Time${i}.txt Time${i}_Probability.txt
+		tail -n +59 Lang${i}_Probability.txt > tmp_Lang${i}.txt
+		rm Lang${i}_Probability.txt
+		mv tmp_Lang${i}.txt Lang${i}_Probability.txt
 	done
