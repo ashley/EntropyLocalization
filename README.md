@@ -15,6 +15,7 @@ genprogPath = /Users/ashleychen/Documents/workspace/GenProg4Java
 jdk7 = /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/bin
 jdk8 = /Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/bin
 ```
+#### Questions: what are the copiedFiles and projectPath, and how are they different from the ExamplesPath?
 
 2. Run `SourceCodeAggregation.py`. Make sure directories are already existing
 3. Run `DiffSourceCode.py`. You may need to create a directory caleld `DiffCode` first
