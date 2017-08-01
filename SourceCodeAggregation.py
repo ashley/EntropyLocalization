@@ -24,6 +24,7 @@ def readConfigurations():
         configs["genprogPath"] = config.get("Basic", "genprogPath")
         configs["jdk7"] = configs.get("Basic", "jdk7")
         configs["jdk8"] = configs.get("Basic", "jdk8")
+        configs["grammarModelPath"] = configs.get("Basic", "grammarModel")
     except:
         print "Error with Configuration file. Please make sure it meets these specifications: "
         print "FileName: parse_defects4j.cfg   File Path: same directory as diffBugs.py"
@@ -39,6 +40,7 @@ def readConfigurations():
         print "genprogPath = <Absolute Path to GenProg4java>"
         print "jdk7 = <Absolute Path to JVM 7>"
         print "jdk8 = <Absolute Path to JVM 8>"
+        print "grammarModelPath = <Absolute path to a directory where your .tsg files are located>"
         print "------"
         sys.exit()
 
@@ -84,10 +86,14 @@ def checkoutGenProgDefects4j(bugID):
             "bash ", configs["genprogPath"], "/defects4j-scripts/prepareBug.sh ", configs["project"], "  ",
             bugID, " humanMade 1 ", 
             configs["examplesPath"], " " ,
-            configs["jdk7"] + " " + configs["jdk8"]
+            configs["jdk7"] , " " ,
+            configs["jdk8"], " " ,
+            configs["genprogPath"] , " " ,
+            configs["grammarModelPath"], "/", configs["project"].lower() , bugID , "b.tsg"
             ])
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
+        print output
 
 """
 Bash copies modified files to Copies directory
@@ -129,15 +135,17 @@ def copyModifiedFiles(filePaths, bugID):
 
         process = subprocess.Popen(buggyCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
+        print output
         process = subprocess.Popen(fixedCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
+        print output
 
 def main():
     readConfigurations()
-    for i in range(1,int(configs["projectNum"])+1):
-        i = str(i)
-        checkoutGenProgDefects4j(i)
-        checkoutFixedProject(i)
-        copyModifiedFiles(defects4jInfo(i), i)
+    #for i in range(1,int(configs["projectNum"])+1):
+    i = str(configs["projectNum"])
+    checkoutGenProgDefects4j(i)
+    checkoutFixedProject(i)
+    copyModifiedFiles(defects4jInfo(i), i)
 
 main()
