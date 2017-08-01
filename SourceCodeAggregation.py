@@ -22,8 +22,8 @@ def readConfigurations():
         configs["copiedFiles"] = config.get("Basic", "copiedFiles")
         configs["projectPath"] = config.get("Basic", "projectPath")
         configs["genprogPath"] = config.get("Basic", "genprogPath")
-        configs["jdk7"] = configs.get("Basic", "jdk7")
-        configs["jdk8"] = configs.get("Basic", "jdk8")
+        configs["jdkSeven"] = config.get("Basic", "jdkSeven")        
+        configs["jdkEight"] = configs.get("Basic", "jdkEight")
         configs["grammarModelPath"] = configs.get("Basic", "grammarModelPath")
     except:
         print "Error with Configuration file. Please make sure it meets these specifications: "
@@ -38,8 +38,8 @@ def readConfigurations():
         print "copiedFiles = <absolute path to resulting directory>"
         print "projectPath = <Absolute Path to resulting project directory>"
         print "genprogPath = <Absolute Path to GenProg4java>"
-        print "jdk7 = <Absolute Path to JVM 7>"
-        print "jdk8 = <Absolute Path to JVM 8>"
+        print "jdkSeven = <Absolute Path to JVM 7>"
+        print "jdkEight = <Absolute Path to JVM 8>"
         print "grammarModelPath = <Absolute path to a directory where your .tsg files are located>"
         print "------"
         sys.exit()
@@ -86,8 +86,8 @@ def checkoutGenProgDefects4j(bugID):
             "bash ", configs["genprogPath"], "/defects4j-scripts/prepareBug.sh ", configs["project"], "  ",
             bugID, " humanMade 1 ", 
             configs["examplesPath"], " " ,
-            configs["jdk7"] , " " ,
-            configs["jdk8"], " " ,
+            configs["jdkSeven"] , " " ,
+            configs["jdkEight"], " " ,
             configs["genprogPath"] , " " ,
             configs["grammarModelPath"], "/", configs["project"].lower() , bugID , "b.tsg"
             ])
