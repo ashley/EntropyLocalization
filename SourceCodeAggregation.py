@@ -24,7 +24,7 @@ def readConfigurations():
         configs["genprogPath"] = config.get("Basic", "genprogPath")
         configs["jdk7"] = configs.get("Basic", "jdk7")
         configs["jdk8"] = configs.get("Basic", "jdk8")
-        configs["grammarModelPath"] = configs.get("Basic", "grammarModel")
+        configs["grammarModelPath"] = configs.get("Basic", "grammarModelPath")
     except:
         print "Error with Configuration file. Please make sure it meets these specifications: "
         print "FileName: parse_defects4j.cfg   File Path: same directory as diffBugs.py"
@@ -91,6 +91,7 @@ def checkoutGenProgDefects4j(bugID):
             configs["genprogPath"] , " " ,
             configs["grammarModelPath"], "/", configs["project"].lower() , bugID , "b.tsg"
             ])
+        print bashCommand
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
         print output
