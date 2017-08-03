@@ -33,5 +33,5 @@ jdkEight | Absolute path to where Java 8 is lcoated
 grammarModelPath | A directory to where models are located. Create the directory beforehand
 
 2. Run `SourceCodeAggregation.py`. Make sure directories are already existing
-3. Run `DiffSourceCode.py`. You may need to create a directory caleld `DiffCode` first
+3. Run `DiffSourceCode.py`. You will need to manually input the name of the Project and where the directory from `SourceCodeAggregation.py` is located. *Note: Dragging paths to terminal may automatically make a space after the path. Make sure the input is just the path string and there are no spaces*
 4. Run `src/clegoues/genprog4java/main/Run.java` from Genprog4Java. Change the hard-coded variables, `examplePath` and `outputPath`.
