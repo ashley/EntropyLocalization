@@ -1,8 +1,8 @@
 import subprocess
 import sys
 import os
-import ConfigParser
 import re
+from ConfigParser import SafeConfigParser
 from filecmp import dircmp
 
 configs = {}
@@ -12,19 +12,19 @@ Reads configuration file called parse_defects4j.cfg
 """
 def readConfigurations():
     try:
-        config = ConfigParser.ConfigParser()
-        config.read('parse_defects4j.cfg')
-        configs["project"] = config.get("Basic","project")
-        configs["projectNum"] = config.get("Basic","projectNum")
-        configs["version"] = config.get("Basic","version")
-        configs["examplesPath"] = config.get("Basic","examplesPath")
-        configs["srcPath"] = config.get("Basic","srcPath")
-        configs["copiedFiles"] = config.get("Basic", "copiedFiles")
-        configs["projectPath"] = config.get("Basic", "projectPath")
-        configs["genprogPath"] = config.get("Basic", "genprogPath")
-        configs["jdkSeven"] = config.get("Basic", "jdkSeven")        
-        configs["jdkEight"] = configs.get("Basic", "jdkEight")
-        configs["grammarModelPath"] = configs.get("Basic", "grammarModelPath")
+	config = SafeConfigParser()
+	config.read('parse_defects4j.cfg')
+	configs["project"] = config.get("Basic","project")
+	configs["projectNum"] = config.get("Basic","projectNum")
+	configs["version"] = config.get("Basic","version")
+	configs["examplesPath"] = config.get("Basic","examplesPath")
+	configs["srcPath"] = config.get("Basic","srcPath")
+	configs["copiedFiles"] = config.get("Basic", "copiedFiles")
+	configs["projectPath"] = config.get("Basic", "projectPath")
+	configs["genprogPath"] = config.get("Basic", "genprogPath")
+	configs["jdkSeven"] = config.get("Basic", "jdkSeven")        
+	configs["jdkEight"] = config.get("Basic", "jdkEight")
+	configs["grammarModel"] = config.get("Basic", "grammarModel")
     except:
         print "Error with Configuration file. Please make sure it meets these specifications: "
         print "FileName: parse_defects4j.cfg   File Path: same directory as diffBugs.py"
@@ -40,10 +40,9 @@ def readConfigurations():
         print "genprogPath = <Absolute Path to GenProg4java>"
         print "jdkSeven = <Absolute Path to JVM 7>"
         print "jdkEight = <Absolute Path to JVM 8>"
-        print "grammarModelPath = <Absolute path to a directory where your .tsg files are located>"
+        print "grammarModel = <Absolute path to a directory where your .tsg files are located>"
         print "------"
         sys.exit()
-
 """
 Parses defect4j info command
 @param {String} bugID; index of bug version
@@ -89,7 +88,7 @@ def checkoutGenProgDefects4j(bugID):
             configs["jdkSeven"] , " " ,
             configs["jdkEight"], " " ,
             configs["genprogPath"] , " " ,
-            configs["grammarModelPath"], "/", configs["project"].lower() , bugID , "b.tsg"
+            configs["grammarModel"], "/", configs["project"].lower() , bugID , "b.tsg"
             ])
         print bashCommand
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
