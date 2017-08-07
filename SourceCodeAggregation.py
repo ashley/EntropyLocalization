@@ -70,11 +70,11 @@ def checkoutFixedProject(bugID):
     bashCommand = ''.join([
         "defects4j checkout -p ", internalConfiguration["project"],
         " -v ", bugID,
-        "f -w ", internalConfiguration["examplesPath"],internalConfiguration["project"], bugID, "F"
+        "f -w ", internalConfiguration["examplesPath"],internalConfiguration["project"], bugID, "Fixed"
         ])
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
-    internalConfiguration["fixedPath"] = internalConfiguration["examplesPath"] + internalConfiguration["project"] + bugID + "F"
+    internalConfiguration["fixedPath"] = internalConfiguration["examplesPath"] + internalConfiguration["project"] + bugID + "Fixed"
 
 """
 Bash command to checkout Defects4j projects with GenProg internalConfiguration. Follow GenProg installation before executing
