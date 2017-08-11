@@ -95,6 +95,7 @@ def checkoutGenProgDefects4j(bugID):
             internalConfiguration["grammarModel"], "/", internalConfiguration["project"].lower() , bugID , "b.tsg"
             ])
         print executeCommand(bashCommand)
+
 """
 Bash copies modified files to Copies directory
 @param {String} bugID; index of bug version
@@ -126,12 +127,13 @@ def copyModifiedFiles(filePaths, bugID):
                         "/f/",
                         name
                         ])
-        if not os.path.lexists(internalConfiguration["projectPath"]+"/"+bugID):
-            os.makedirs(internalConfiguration["projectPath"]+"/"+bugID)
-        if not os.path.lexists(internalConfiguration["projectPath"]+"/"+bugID+"/b"):
-            os.makedirs(internalConfiguration["projectPath"]+"/"+bugID+"/b")
-        if not os.path.lexists(internalConfiguration["projectPath"]+"/"+bugID+"/f"):
-            os.makedirs(internalConfiguration["projectPath"]+"/"+bugID+"/f")
+        projectIDPath = internalConfiguration["projectPath"]+"/"+bugID
+        if not os.path.lexists(projectIDPath):
+            os.makedirs(projectIDPath)
+        if not os.path.lexists(projectIDPath+"/b"):
+            os.makedirs(projectIDPath+"/b")
+        if not os.path.lexists(projectIDPath+"/f"):
+            os.makedirs(projectIDPath+"/f")
 
         print executeBash(buggyCommand)
         print executeBash(fixedCommand)
