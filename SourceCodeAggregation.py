@@ -137,7 +137,7 @@ def copyModifiedFiles(filePaths, bugID):
 
         print executeBash(buggyCommand)
         print executeBash(fixedCommand)
-
+t
 """
 Helper function for executing bash commands
 @param {String} command: bash command
@@ -155,4 +155,5 @@ def main():
     checkoutFixedProject(projectNum)
     copyModifiedFiles(defects4jInfo(projectNum), projectNum)
 
-main()
+if __name__ == "__main__":
+    main()
