@@ -9,22 +9,23 @@ internalConfiguration = {}
 
 """
 Reads configuration file called parse_defects4j.cfg
+@param {String} sectionName: name of the section in configuration file
 """
 def readConfigurations():
     try:
 	config = SafeConfigParser()
 	config.read('parse_defects4j.cfg')
-	internalConfiguration["project"] = config.get("Basic","project")
-	internalConfiguration["projectNum"] = config.get("Basic","projectNum")
-	internalConfiguration["version"] = config.get("Basic","version")
-	internalConfiguration["examplesPath"] = config.get("Basic","examplesPath")
-	internalConfiguration["srcPath"] = config.get("Basic","srcPath")
-	internalConfiguration["copiedFiles"] = config.get("Basic", "copiedFiles")
-	internalConfiguration["projectPath"] = config.get("Basic", "projectPath")
-	internalConfiguration["genprogPath"] = config.get("Basic", "genprogPath")
-	internalConfiguration["jdkSeven"] = config.get("Basic", "jdkSeven")        
-	internalConfiguration["jdkEight"] = config.get("Basic", "jdkEight")
-	internalConfiguration["grammarModel"] = config.get("Basic", "grammarModel")
+	internalConfiguration["project"] = config.get(sectionName,"project")
+	internalConfiguration["projectNum"] = config.get(sectionName,"projectNum")
+	internalConfiguration["version"] = config.get(sectionName,"version")
+	internalConfiguration["examplesPath"] = config.get(sectionName,"examplesPath")
+	internalConfiguration["srcPath"] = config.get(sectionName,"srcPath")
+	internalConfiguration["copiedFiles"] = config.get(sectionName, "copiedFiles")
+	internalConfiguration["projectPath"] = config.get(sectionName, "projectPath")
+	internalConfiguration["genprogPath"] = config.get(sectionName, "genprogPath")
+	internalConfiguration["jdkSeven"] = config.get(sectionName, "jdkSeven")        
+	internalConfiguration["jdkEight"] = config.get(sectionName, "jdkEight")
+	internalConfiguration["grammarModel"] = config.get(sectionName, "grammarModel")
     except:
         print "Error with Configuration file. Please make sure it meets these specifications: "
         print "FileName: parse_defects4j.cfg   File Path: same directory as diffBugs.py"
@@ -50,17 +51,21 @@ Parses defect4j info command
 """
 def defects4jInfo(bugID):
     bashCommand = "defects4j info -p " + internalConfiguration["project"] + " -b " + bugID
-    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-    output, error = process.communicate()
+    executeCommand(bashCommand)
     #Parsing default defects4j info command
-    fileStrings =  ["%s%s%s" % (internalConfiguration["srcPath"],i[3:].replace('.','/'), ".java") for i in 
-                    output.split("--------------------------------------------------------------------------------")
-                    [-2].strip('\n').split("\n")[1:]
-    
-                    ]
+    fileStrings = parseDefects4JInfo(internalConfiguration["srcPath"])
     fileNames = [i.split('/')[-1] for i in fileStrings]
     filePackage = dict(zip(fileNames, fileStrings))
     return filePackage
+
+"""
+Special parsing for defect4j's format
+@param {String} outputLog: Given output string from defect's info command
+"""
+def parseDefects4JInfo(outputLog):
+    return ["%s%s%s" % (outputLog,i[3:].replace('.','/'), ".java") for i in 
+            output.split("--------------------------------------------------------------------------------")
+            [-2].strip('\n').split("\n")[1:] ]
 
 """
 Checkout fixed project into Example directory
@@ -72,8 +77,7 @@ def checkoutFixedProject(bugID):
         " -v ", bugID,
         "f -w ", internalConfiguration["examplesPath"],internalConfiguration["project"], bugID, "Fixed"
         ])
-    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-    output, error = process.communicate()
+    executeCommand(bashCommand)
     internalConfiguration["fixedPath"] = internalConfiguration["examplesPath"] + internalConfiguration["project"] + bugID + "Fixed"
 
 """
@@ -90,11 +94,7 @@ def checkoutGenProgDefects4j(bugID):
             internalConfiguration["genprogPath"] , " " ,
             internalConfiguration["grammarModel"], "/", internalConfiguration["project"].lower() , bugID , "b.tsg"
             ])
-        print bashCommand
-        process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-        output, error = process.communicate()
-        print output
-
+        print executeCommand(bashCommand)
 """
 Bash copies modified files to Copies directory
 @param {String} bugID; index of bug version
@@ -133,12 +133,18 @@ def copyModifiedFiles(filePaths, bugID):
         if not os.path.lexists(internalConfiguration["projectPath"]+"/"+bugID+"/f"):
             os.makedirs(internalConfiguration["projectPath"]+"/"+bugID+"/f")
 
-        process = subprocess.Popen(buggyCommand.split(), stdout=subprocess.PIPE)
+        print executeBash(buggyCommand)
+        print executeBash(fixedCommand)
+
+"""
+Helper function for executing bash commands
+@param {String} command: bash command
+@return {String} output: Any output print from bash command execution
+"""
+def executeBash(command):
+        process = subprocess.Popen(commandList.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
-        print output
-        process = subprocess.Popen(fixedCommand.split(), stdout=subprocess.PIPE)
-        output, error = process.communicate()
-        print output
+        return output
 
 def main():
     readConfigurations()
