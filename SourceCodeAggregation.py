@@ -12,6 +12,8 @@ Reads configuration file called parse_defects4j.cfg
 @param {String} sectionName: name of the section in configuration file
 """
 def readConfigurations():
+    #Default option
+    sectionName = "Basic"
     try:
 	config = SafeConfigParser()
 	config.read('parse_defects4j.cfg')
@@ -43,6 +45,7 @@ def readConfigurations():
         print "jdkEight = <Absolute Path to JVM 8>"
         print "grammarModel = <Absolute path to a directory where your .tsg files are located>"
         print "------"
+        print sys.exc_info()
         sys.exit()
 """
 Parses defect4j info command
@@ -51,8 +54,8 @@ Parses defect4j info command
 """
 def defects4jInfo(bugID):
     bashCommand = "defects4j info -p " + internalConfiguration["project"] + " -b " + bugID
-    executeCommand(bashCommand)
-    fileStrings = parseDefects4JInfo(internalConfiguration["srcPath"])
+    output = executeBash(bashCommand)
+    fileStrings = parseDefects4JInfo(internalConfiguration["srcPath"],output)
     #fileNames are found on the end of the path
     fileNames = [i.split('/')[-1] for i in fileStrings]
     filePackage = dict(zip(fileNames, fileStrings))
@@ -60,12 +63,13 @@ def defects4jInfo(bugID):
 
 """
 Special parsing for defect4j's format
-@param {String} outputLog: Given output string from defect's info command
+@param {String} defectOutput: Given output string from defect's info command
+@param {String} bashOutput: Given output from executing bash
 """
-def parseDefects4JInfo(outputLog):
+def parseDefects4JInfo(defectOutput,bashOutput):
     #Parsing default defects4j info command
-    return ["%s%s%s" % (outputLog,i[3:].replace('.','/'), ".java") for i in 
-            output.split("--------------------------------------------------------------------------------")
+    return ["%s%s%s" % (defectOutput,i[3:].replace('.','/'), ".java") for i in 
+            bashOutput.split("--------------------------------------------------------------------------------")
             [-2].strip('\n').split("\n")[1:] ]
 
 """
@@ -78,7 +82,7 @@ def checkoutFixedProject(bugID):
         " -v ", bugID,
         "f -w ", internalConfiguration["examplesPath"],internalConfiguration["project"], bugID, "Fixed"
         ])
-    executeCommand(bashCommand)
+    executeBash(bashCommand)
     #Must execute bash command to set fixedPath in internal Configs
     internalConfiguration["fixedPath"] = internalConfiguration["examplesPath"] + internalConfiguration["project"] + bugID + "Fixed"
 
@@ -97,7 +101,7 @@ def checkoutGenProgDefects4j(bugID):
             internalConfiguration["genprogPath"] , " " ,
             internalConfiguration["grammarModel"], "/", internalConfiguration["project"].lower() , bugID , "b.tsg"
             ])
-        print executeCommand(bashCommand)
+        print executeBash(bashCommand)
 
 """
 Bash copies modified files to Copies directory
@@ -152,7 +156,7 @@ Helper function for executing bash commands
 @return {String} output: Any output print from bash command execution
 """
 def executeBash(command):
-    process = subprocess.Popen(commandList.split(), stdout=subprocess.PIPE)
+    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
     return output
 
