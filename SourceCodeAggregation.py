@@ -52,8 +52,8 @@ Parses defect4j info command
 def defects4jInfo(bugID):
     bashCommand = "defects4j info -p " + internalConfiguration["project"] + " -b " + bugID
     executeCommand(bashCommand)
-    #Parsing default defects4j info command
     fileStrings = parseDefects4JInfo(internalConfiguration["srcPath"])
+    #fileNames are found on the end of the path
     fileNames = [i.split('/')[-1] for i in fileStrings]
     filePackage = dict(zip(fileNames, fileStrings))
     return filePackage
@@ -63,6 +63,7 @@ Special parsing for defect4j's format
 @param {String} outputLog: Given output string from defect's info command
 """
 def parseDefects4JInfo(outputLog):
+    #Parsing default defects4j info command
     return ["%s%s%s" % (outputLog,i[3:].replace('.','/'), ".java") for i in 
             output.split("--------------------------------------------------------------------------------")
             [-2].strip('\n').split("\n")[1:] ]
@@ -78,6 +79,7 @@ def checkoutFixedProject(bugID):
         "f -w ", internalConfiguration["examplesPath"],internalConfiguration["project"], bugID, "Fixed"
         ])
     executeCommand(bashCommand)
+    #Must execute bash command to set fixedPath in internal Configs
     internalConfiguration["fixedPath"] = internalConfiguration["examplesPath"] + internalConfiguration["project"] + bugID + "Fixed"
 
 """
@@ -86,7 +88,8 @@ Bash command to checkout Defects4j projects with GenProg internalConfiguration. 
 """
 def checkoutGenProgDefects4j(bugID):
         bashCommand = ''.join([
-            "bash ", internalConfiguration["genprogPath"], "/defects4j-scripts/prepareBug.sh ", internalConfiguration["project"], "  ",
+            "bash ", internalConfiguration["genprogPath"], "/defects4j-scripts/prepareBug.sh ",
+            internalConfiguration["project"], "  ",
             bugID, " humanMade 1 ", 
             internalConfiguration["examplesPath"], " " ,
             internalConfiguration["jdkSeven"] , " " ,
@@ -98,7 +101,7 @@ def checkoutGenProgDefects4j(bugID):
 
 """
 Bash copies modified files to Copies directory
-@param {String} bugID; index of bug version
+@param {String} bugID: index of bug version
 @param {List} filePaths: list of relative paths
 """
 def copyModifiedFiles(filePaths, bugID):
@@ -128,25 +131,30 @@ def copyModifiedFiles(filePaths, bugID):
                         name
                         ])
         projectIDPath = internalConfiguration["projectPath"]+"/"+bugID
-        if not os.path.lexists(projectIDPath):
-            os.makedirs(projectIDPath)
-        if not os.path.lexists(projectIDPath+"/b"):
-            os.makedirs(projectIDPath+"/b")
-        if not os.path.lexists(projectIDPath+"/f"):
-            os.makedirs(projectIDPath+"/f")
+        checkDirectory(projectIDPath)
+        checkDirectory(projectIDPath+"/b")
+        checkDirectory(projectIDPath+"/f")
 
         print executeBash(buggyCommand)
         print executeBash(fixedCommand)
-t
+
+"""
+Helper function for making directory
+@param {Sting} path: path to directory to create
+"""
+def checkDirectory(path):
+    if not os.path.lexists(path):
+        os.makedirs(path)
+
 """
 Helper function for executing bash commands
 @param {String} command: bash command
 @return {String} output: Any output print from bash command execution
 """
 def executeBash(command):
-        process = subprocess.Popen(commandList.split(), stdout=subprocess.PIPE)
-        output, error = process.communicate()
-        return output
+    process = subprocess.Popen(commandList.split(), stdout=subprocess.PIPE)
+    output, error = process.communicate()
+    return output
 
 def main():
     readConfigurations()
