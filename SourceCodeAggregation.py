@@ -150,10 +150,9 @@ def executeBash(command):
 
 def main():
     readConfigurations()
-    #for i in range(1,int(internalConfiguration["projectNum"])+1):
-    i = str(internalConfiguration["projectNum"])
-    checkoutGenProgDefects4j(i)
-    checkoutFixedProject(i)
-    copyModifiedFiles(defects4jInfo(i), i)
+    projectNum = str(internalConfiguration["projectNum"])
+    checkoutGenProgDefects4j(projectNum)
+    checkoutFixedProject(projectNum)
+    copyModifiedFiles(defects4jInfo(projectNum), projectNum)
 
 main()
