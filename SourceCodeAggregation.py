@@ -163,9 +163,12 @@ def executeBash(command):
 def main():
     readConfigurations()
     projectNum = str(internalConfiguration["projectNum"])
-    checkoutGenProgDefects4j(projectNum)
-    checkoutFixedProject(projectNum)
-    copyModifiedFiles(defects4jInfo(projectNum), projectNum)
+    
+    for i in range(1,36):
+        projectNum = str(i)
+        checkoutGenProgDefects4j(projectNum)
+        checkoutFixedProject(projectNum)
+        copyModifiedFiles(defects4jInfo(projectNum), projectNum)
 
 if __name__ == "__main__":
     main()
